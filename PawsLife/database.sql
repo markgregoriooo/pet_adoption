@@ -7,7 +7,7 @@
 CREATE USER 'IT2A'@'localhost' IDENTIFIED BY 'petadoption';
 
 -- use pawslife_db
-mysql -u IT2A -p -D pawslife_db;
+mysql -u IT2A -p 
 
 -- enter password:
 petadoption
@@ -21,7 +21,8 @@ USE pawslife_db;
 
 -- for user accounts
 CREATE TABLE user_accounts(
-    user_acc_id INT UNSIGNED AUTO_INCREMENT, 
+    user_acc_id INT UNSIGNED AUTO_INCREMENT,
+    user_email VARCHAR(100) NOT NULL,
     username VARCHAR(200) NOT NULL UNIQUE,
     user_password_hash VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -64,10 +65,7 @@ CREATE TABLE pets(
     gender VARCHAR(10) NOT NULL, 
     age INT(3) UNSIGNED NOT NULL, 
     date_of_birth DATE NOT NULL, 
-    photo_name VARCHAR(200) NOT NULL,
-    photo_data  LONGBLOB,
-    photo_size INT UNSIGNED,
-    photo_type VARCHAR(50),
+    is_adopted BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 
     is_deleted BOOLEAN DEFAULT FALSE, 
@@ -79,7 +77,7 @@ CREATE TABLE pets(
 CREATE TABLE adopted_pets(
     adopted_pet_id INT UNSIGNED AUTO_INCREMENT, 
     pet_id INT UNSIGNED, 
-    adopter_id INT UNSIGNED, 
+    adopter_id INT UNSIGNED,
     adoption_date DATE DEFAULT CURRENT_DATE(), 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 
@@ -96,7 +94,11 @@ CREATE TABLE cats(
     pet_id INT UNSIGNED,
     color VARCHAR(50) NOT NULL, 
     litter_trained BOOLEAN DEFAULT FALSE, 
-    is_indoor BOOLEAN DEFAULT FALSE,  
+    is_indoor BOOLEAN DEFAULT FALSE,
+    photo_name VARCHAR(200) NOT NULL,
+    photo_data  LONGBLOB,
+    photo_size INT UNSIGNED,
+    photo_type VARCHAR(50), 
     PRIMARY KEY (cat_id), 
     FOREIGN KEY (pet_id) REFERENCES pets(pet_id) ON DELETE CASCADE
 );
@@ -106,7 +108,11 @@ CREATE TABLE dogs(
     dog_id INT UNSIGNED AUTO_INCREMENT, 
     pet_id INT UNSIGNED, 
     is_leash_trained BOOLEAN DEFAULT FALSE, 
-    dog_size ENUM("small", "medium", "large", "extra large") NOT NULL, 
+    dog_size ENUM("small", "medium", "large", "extra large") NOT NULL,
+    photo_name VARCHAR(200) NOT NULL,
+    photo_data  LONGBLOB,
+    photo_size INT UNSIGNED,
+    photo_type VARCHAR(50), 
     PRIMARY KEY(dog_id), 
     FOREIGN KEY(pet_id) REFERENCES pets(pet_id) ON DELETE CASCADE
 );
@@ -116,9 +122,7 @@ CREATE TABLE donators(
     donator_id INT UNSIGNED AUTO_INCREMENT, 
     donator_name VARCHAR(50) NOT NULL, 
     donator_email VARCHAR(100) NOT NULL, 
-    donator_phone_no VARCHAR(20), 
-    amount DECIMAL(15, 2),
-    donator_address VARCHAR(100) NOT NULL,
+    amount DECIMAL(15, 2),  
     photo_name VARCHAR(200) NOT NULL,
     photo_data  LONGBLOB,
     photo_size INT UNSIGNED,
@@ -133,7 +137,6 @@ CREATE TABLE donators(
 -- for donations
 CREATE TABLE donations(
     donation_id INT AUTO_INCREMENT, 
-    donator_id INT UNSIGNED, 
     total DECIMAL(65, 2),            
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 

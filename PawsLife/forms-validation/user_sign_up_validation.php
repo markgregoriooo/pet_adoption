@@ -13,6 +13,9 @@
        
       if(isset($_POST["createAcc"])){
 
+        // connect to db
+        include('config/db_connect.php');
+
        // created email validation
            if(empty($_POST["create-email"])){
                $createAccErrors["crtemailError"] = "* Account creation failed. Email address is required.";

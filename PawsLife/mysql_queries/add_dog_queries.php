@@ -5,16 +5,6 @@
         //if there is no error in an errors array
         if(!array_filter($dogErrors)){
 
-            //insert into pets table(parent) 
-            // Get file details
-            $fileTmpPath = $_FILES['dog_photo']['tmp_name'];  // Temporary file path
-            $fileName = $_FILES['dog_photo']['name'];         // Original file name
-            $fileSize = $_FILES['dog_photo']['size'];         // File size in bytes
-            $fileType = $_FILES['dog_photo']['type'];         // MIME type of the file
-            
-            // Open the file and read the content
-            $fileData = file_get_contents($fileTmpPath);  // Read the file data into a variable
-
             // connect to db
             include('../config/db_connect.php');
 
@@ -22,10 +12,10 @@
             $conn->begin_transaction();
 
             //insert into pets table(parent) 
-            $stmt = $conn->prepare("INSERT INTO pets(pet_name, gender, age, date_of_birth, photo_name, photo_data, photo_size, photo_type) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt = $conn->prepare("INSERT INTO pets(pet_name, gender, age, date_of_birth) VALUES(?, ?, ?, ?)");
 
             if($stmt){
-                $stmt->bind_param("ssisssis", $dogNameInput, $dogGenderInput, $dogAgeInput, $dogDateFBirth, $fileName, $fileData, $fileSize, $fileType);
+                $stmt->bind_param("ssis", $dogNameInput, $dogGenderInput, $dogAgeInput, $dogDateFBirth);
 
                 //execute the parent insert
                 if($stmt->execute()){
@@ -48,12 +38,23 @@
             }
 
 
+            //insert into pets table(parent) 
+            // Get file details
+            $fileTmpPath = $_FILES['dog_photo']['tmp_name'];  // Temporary file path
+            $fileName = $_FILES['dog_photo']['name'];         // Original file name
+            $fileSize = $_FILES['dog_photo']['size'];         // File size in bytes
+            $fileType = $_FILES['dog_photo']['type'];         // MIME type of the file
+            
+            // Open the file and read the content
+            $fileData = file_get_contents($fileTmpPath);  // Read the file data into a variable
+
+
             //prepared statement
-            $stmt = $conn->prepare("INSERT INTO dogs(pet_id, is_leash_trained, dog_size) VALUES(?, ?, ?)");
+            $stmt = $conn->prepare("INSERT INTO dogs(pet_id, is_leash_trained, dog_size, photo_name, photo_data, photo_size, photo_type) VALUES(?, ?, ?, ?, ?, ?, ?)");
 
             if($stmt){
                 //bind parameters
-                $stmt->bind_param("iis", $pet_last_inserted_id, $leastTrained, $dogSizeInput);
+                $stmt->bind_param("iisssis", $pet_last_inserted_id, $leastTrained, $dogSizeInput, $fileName, $fileData, $fileSize, $fileType);
 
                 //execute the cat table insert
                 if(!$stmt->execute()){
