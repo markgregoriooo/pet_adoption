@@ -1,6 +1,6 @@
 <?php
     // associative array for adoption-form errors
-    $catErrors = array('catName' => '', 'catGender' => '', "catAge" => '', 'cat_date_of_birth' => '', 'color' => '', 'upload_photo' => '', 'litter_trained' => '', 'indoor' => '' );
+    $catErrors = array('catName' => '', 'catGender' => '', "catAge" => '', 'cat_date_of_birth' => '', 'color' => '',  'litter_trained' => '', 'indoor' => '' );
 
     // var inst
     $catNameInput = $catGenderInput = $catAgeInput = $catDateFBirth =  $catColorInput = $catPhotoInput = $litterTrained = $indoor = "";
@@ -101,21 +101,16 @@
             }
         }
 
-        //insert PHOTO DATA VALIDATION
-        if(empty($_POST['cat_photo'])){
-            $catPhotoInputBorderColor = "border-danger border-2";
-            $catErrors['upload_photo'] = "Please insert an image.";
-        }
 
         // validate litter trained field
-        if(empty($_POST['litterTrained'])){
-            $catErrors['litter_trained'] = "Please select an option.";
+        if(!empty($_POST['litterTrained'])){
+            $litterTrained = (bool)$_POST['litterTrained'];
         }
 
         // cat indoor validation
-        if(empty($_POST['isIndoor'])){
+        if(!empty($_POST['isIndoor'])){
 
-            $catErrors['indoor'] = "Please select an option.";
+            $indoor = (bool)$_POST['isIndoor'];
         }
 
     }// end

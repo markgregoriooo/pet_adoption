@@ -1,9 +1,9 @@
 <?php
     // associative array for adoption-form errors
-    $dogErrors = array('dogName' => '', 'dogGender' => '', "dogAge" => '', 'dog_date_of_birth' => '', 'size' => '', 'upload_photo' => '', 'leash_trained' => '');
+    $dogErrors = array('dogName' => '', 'dogGender' => '', "dogAge" => '', 'dog_date_of_birth' => '', 'size' => '', 'leash_trained' => '');
 
     // var inst
-    $dogNameInput = $dogGenderInput = $dogAgeInput = $dogDateFBirth =  $dogSizeInput = $dogPhotoInput = $leashTrained =  "";
+    $dogNameInput = $dogGenderInput = $dogAgeInput = $dogDateFBirth =  $dogSizeInput  = $leashTrained =  "";
 
     // default border colors
     $dogNameInputBorderColor = $dogGenderInputBorderColor = $dogAgeInputBorderColor = $dogDateFBirthBorderColor =  $dogSizeInputBorderColor = $dogPhotoInputBorderColor  = "border-dark";
@@ -99,15 +99,10 @@
             }
         }
 
-        //insert PHOTO DATA VALIDATION
-        if(empty($_POST['dog_photo'])){
-            $dogPhotoInputBorderColor = "border-danger border-2";
-            $dogErrors['upload_photo'] = "Please insert an image.";
-        }
 
         // validate leash trained field
-        if(empty($_POST['isLeashTrained'])){
-            $dogErrors['leash_trained'] = "Please select an option.";
+        if(!empty($_POST['isLeashTrained'])){
+            $leastTrained = (bool)$_POST['isLeashTrained'];
         }
 
 

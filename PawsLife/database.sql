@@ -64,6 +64,10 @@ CREATE TABLE pets(
     gender VARCHAR(10) NOT NULL, 
     age INT(3) UNSIGNED NOT NULL, 
     date_of_birth DATE NOT NULL, 
+    photo_name VARCHAR(200) NOT NULL,
+    photo_data  LONGBLOB,
+    photo_size INT UNSIGNED,
+    photo_type VARCHAR(50),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 
     is_deleted BOOLEAN DEFAULT FALSE, 
@@ -92,11 +96,7 @@ CREATE TABLE cats(
     pet_id INT UNSIGNED,
     color VARCHAR(50) NOT NULL, 
     litter_trained BOOLEAN DEFAULT FALSE, 
-    is_indoor BOOLEAN DEFAULT FALSE, 
-    photo_name VARCHAR(200) NOT NULL,
-    photo_data  LONGBLOB,
-    photo_size INT UNSIGNED,
-    photo_type VARCHAR(50), 
+    is_indoor BOOLEAN DEFAULT FALSE,  
     PRIMARY KEY (cat_id), 
     FOREIGN KEY (pet_id) REFERENCES pets(pet_id) ON DELETE CASCADE
 );
@@ -107,10 +107,6 @@ CREATE TABLE dogs(
     pet_id INT UNSIGNED, 
     is_leash_trained BOOLEAN DEFAULT FALSE, 
     dog_size ENUM("small", "medium", "large", "extra large") NOT NULL, 
-    photo_name VARCHAR(200) NOT NULL,
-    photo_data  LONGBLOB,
-    photo_size INT UNSIGNED,
-    photo_type VARCHAR(50), 
     PRIMARY KEY(dog_id), 
     FOREIGN KEY(pet_id) REFERENCES pets(pet_id) ON DELETE CASCADE
 );

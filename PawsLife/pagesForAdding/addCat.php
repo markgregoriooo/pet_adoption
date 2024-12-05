@@ -61,7 +61,6 @@
                   <div class="col-lg-5 col-12 mb-3">
                     <label for="cat_photo" class="form-label d-flex">Upload New photo<label class="text-danger">&nbsp;*</label></label>
                     <input type="file" class="form-control w-100  bg-dark bg-opacity-25 <?php echo $catPhotoInputBorderColor?>" id="cat_photo" name="cat_photo" accept="image/*"/>
-                    <div class="text-danger"><?php echo htmlspecialchars($catErrors['upload_photo']); ?></div>
                   </div>
 
                   <!-- Litter trained -->

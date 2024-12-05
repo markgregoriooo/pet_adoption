@@ -57,7 +57,6 @@
                           <div class="col-lg-5 col-12 mb-3">
                               <label for="dog_photo" class="form-label d-flex">Upload New photo<label class="text-danger">&nbsp;*</label></label>
                               <input type="file" class="form-control w-100  bg-dark bg-opacity-25 <?php echo $dogPhotoInputBorderColor?>" id="dog_photo" name="dog_photo" accept="image/*" value="<?php echo htmlspecialchars($dogPhotoInput); ?>">
-                              <div class="text-danger"><?php echo htmlspecialchars($dogErrors['upload_photo']); ?></div>
                           </div>
 
 
