@@ -24,8 +24,8 @@
     // Close the statement 
     $stmt->close();
 
-    //select into cats
-    //prepared statement for USER ACCOUNTS table
+    //select into dogs
+    //prepared statement for dogs table
     $stmt = $conn->prepare("SELECT * FROM dogs INNER JOIN pets ON dogs.dog_id = pets.pet_id WHERE pets.is_deleted = FALSE AND pets.is_adopted = FALSE ORDER BY pets.created_at");
 
     //execute

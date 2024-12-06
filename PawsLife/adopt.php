@@ -1,5 +1,8 @@
 <?php
-
+  // Check if session has already been started
+  if (session_status() == PHP_SESSION_NONE) {
+    session_start(); // Start the session if not already started
+  }
     // query to display available pets for adoption
     include('mysql_queries/display_dogs&cats_query.php');
  
@@ -9,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Paws Life</title>
 </head>
 <body>
     <?php include('templates/header.php'); ?>
@@ -21,9 +24,9 @@
             <div class="container">
                 <div class="row">
                     <?php foreach($cats as $cat):?>
-                        <?php $_SESSION['petID'] = $cat['pet_id']; //  store the pet id to the session var  ?>
+                        
                         <div class="col-12 col-sm-6 col-md-3 col-lg-3 ">
-                            <div class="card mx-auto mt-5 mb-5 border border-dark" style="width: 18rem;">
+                            <div class="card g-3 mx-auto mt-5 mb-5 border border-dark" style="width: 18rem;">
                                 <img src="data:<?php echo htmlspecialchars($cat['photo_type']); ?>;base64,<?php echo base64_encode($cat['photo_data']); ?>" class="card-img-top w-100 h-25" alt="cat photo">
                                 <div class="card-body">
                                     <h5 class="card-title">Name: <?php echo htmlspecialchars($cat['pet_name']);?></h5>
@@ -49,6 +52,7 @@
                 mb-3 rounded">
                     <div class="row">
                         <?php foreach($dogs as $dog):?>
+                            
                             <?php $_SESSION['petID'] = $dog['pet_id']; //  store the pet id to the session var  ?>
                             <div class="col-12 col-sm-6 col-md-3 col-lg-3 ">
                                 <div class="card mx-auto mt-5 mb-5 border border-dark" style="width: 18rem;">
@@ -58,8 +62,8 @@
                                         <p class="card-text"><strong>Gender: </strong><?php echo htmlspecialchars($dog['gender']);?></p>
                                         <!-- ADOPT & DETAILS BUTTON -->
                                         <div class="d-flex justify-content-evenly">
-                                        <a href="#" class="btn btn-danger">Details</a>
-                                        <a href="dog-adopt-form.php?id=<?php echo htmlspecialchars($dog['id']); ?>" name="edit" class="btn btn-dark w-50">Adopt</a>
+                                            <a href="#" class="btn btn-danger">Details</a>
+                                            <a href="dog-adopt-form.php?id= <?php echo htmlspecialchars($dog['dog_id']); ?>" class="btn btn-dark w-50" name="adopt" >Adopt</a>
                                         </div>
                                     </div>
                                 </div>

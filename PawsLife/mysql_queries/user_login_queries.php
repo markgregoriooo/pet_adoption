@@ -3,7 +3,7 @@
 
         if(!array_filter($adoptErrors)){
             // Prepare the SQL query
-            $sql = "SELECT username, user_password_hash FROM user_accounts WHERE username = ? LIMIT 1";
+            $sql = "SELECT username, user_password_hash FROM user_accounts WHERE username = ? AND is_deleted = FALSE LIMIT 1";
 
             // Prepare the statement 
             $stmt = $conn->prepare($sql);

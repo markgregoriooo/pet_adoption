@@ -32,6 +32,7 @@
      
      // Fetch a single row
      $cat = $result->fetch_assoc(); // Fetch the first row as an associative array
+     $_SESSION['pet_id'] = $cat['pet_id']; //  store the pet id to the session var  
 
      // Close the statement 
      $stmt->close();

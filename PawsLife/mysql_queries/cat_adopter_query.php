@@ -26,7 +26,7 @@
 
                 //store pet id and cat id session var
                 $cat_id = mysqli_real_escape_string($conn, $_SESSION['catID']);
-                $pet_id = mysqli_real_escape_string($conn, $_SESSION['petID']);
+                $pet_id = mysqli_real_escape_string($conn, $_SESSION['pet_id']);
 
 
             //insert into adopter table 
@@ -103,18 +103,13 @@
                 echo      
                 "<script>
                     alert('Cat adopted!');
-                    window.location.href = '../adopt.php';
+                    window.location.href = 'adopt.php';
                 </script>";
             }else{
                 echo "Error preparing the cat insert statement" . $conn->error;
                 $conn->rollback();
                 exit;
             }
-
-
-
-
-            
 
             // commit the transaction and close the db connection
             $conn->commit();

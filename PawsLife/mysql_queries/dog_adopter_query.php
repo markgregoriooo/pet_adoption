@@ -26,7 +26,7 @@
 
                 //store pet id and cat id session var
                 $dog_id = mysqli_real_escape_string($conn, $_SESSION['dogID']);
-                $pet_id = mysqli_real_escape_string($conn, $_SESSION['petID']);
+                $pet_id = mysqli_real_escape_string($conn, $_SESSION['pet_id']);
 
 
             //insert into adopter table 

@@ -1,4 +1,5 @@
 <?php 
+
   //form validation
   include('forms-validation/adopt_login_form_validation.php');
   // mysql query

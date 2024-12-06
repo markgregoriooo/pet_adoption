@@ -1,4 +1,22 @@
-<?php 
+<?php
+  // connect to db
+  include('../config/db_connect.php');
+
+  //select into donations 
+  //prepared statement for select donations table
+  $stmt = $conn->prepare("SELECT total FROM donations WHERE is_deleted = FALSE ORDER BY created_at LIMIT 1");
+  //execute
+  if(!$stmt->execute()){
+      // if there is/are error, roll back the transaction
+      echo "Error preparing the parent insert statement: " . $stmt->error;
+      exit;
+  }
+  //get the result
+  $result = $stmt->get_result();
+  // Fetch the single resulting row as an associative array
+  $donation = $result->fetch_assoc();  
+  // Close the statement 
+  $stmt->close();
 //  mysql for deletion
 ?>
 
@@ -8,7 +26,7 @@
     <section>
       <div class="container-fluid text-center mt-3 mb-3 text-dark p-1 rounded bg-danger" style="height:300px;">
           <h3 class="m-5">TOTAL DONATIONS</h3>
-          <h4>214124242142142142424124</h4>
+          <h4><?php echo $donation['total'] ?></h4>
       </div>
     </section>
     <section>

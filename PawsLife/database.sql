@@ -84,8 +84,8 @@ CREATE TABLE adopted_pets(
     is_deleted BOOLEAN DEFAULT FALSE, 
     deleted_at TIMESTAMP NULL DEFAULT NULL, 
     PRIMARY KEY(adopted_pet_id), 
-    FOREIGN KEY(pet_id) REFERENCES pets(pet_id) ON DELETE CASCADE, 
-    FOREIGN KEY(adopter_id) REFERENCES adopters(adopter_id) ON DELETE CASCADE
+    FOREIGN KEY(pet_id) REFERENCES pets(pet_id) ON UPDATE CASCADE, 
+    FOREIGN KEY(adopter_id) REFERENCES adopters(adopter_id) ON UPDATE CASCADE
 );
 
 -- for cats
@@ -100,7 +100,7 @@ CREATE TABLE cats(
     photo_size INT UNSIGNED,
     photo_type VARCHAR(50), 
     PRIMARY KEY (cat_id), 
-    FOREIGN KEY (pet_id) REFERENCES pets(pet_id) ON DELETE CASCADE
+    FOREIGN KEY (pet_id) REFERENCES pets(pet_id) ON UPDATE CASCADE
 );
 
 -- for dogs
@@ -114,7 +114,7 @@ CREATE TABLE dogs(
     photo_size INT UNSIGNED,
     photo_type VARCHAR(50), 
     PRIMARY KEY(dog_id), 
-    FOREIGN KEY(pet_id) REFERENCES pets(pet_id) ON DELETE CASCADE
+    FOREIGN KEY(pet_id) REFERENCES pets(pet_id) ON UPDATE CASCADE
 );
 
 -- for donators
@@ -143,7 +143,7 @@ CREATE TABLE donations(
     is_deleted BOOLEAN DEFAULT FALSE, 
     deleted_at TIMESTAMP NULL DEFAULT NULL, 
     PRIMARY KEY(donation_id), 
-    FOREIGN KEY(donator_id) REFERENCES donators(donator_id) ON DELETE CASCADE
+    FOREIGN KEY(donator_id) REFERENCES donators(donator_id) ON UPDATE CASCADE
 );
 
 -- login users

@@ -1,4 +1,23 @@
 <?php 
+  // connect to db
+  include('../config/db_connect.php');
+
+  //select into donators
+  //prepared statement for select donators table
+  $stmt = $conn->prepare("SELECT * FROM donators WHERE is_deleted = FALSE ORDER BY created_at");
+
+  //execute
+  if(!$stmt->execute()){
+      // if there is/are error, roll back the transaction
+      echo "Error preparing the parent insert statement: " . $stmt->error;
+      exit;
+  }
+  //get the result
+  $result = $stmt->get_result();
+  // fetch the resulting rows as an array
+  $donators = $result->fetch_all(MYSQLI_ASSOC);
+  // Close the statement 
+  $stmt->close();
 //  mysql for deletion
 ?>
 
@@ -10,36 +29,25 @@
     </div>
         <div class="container">
             <div class="row ">
-                <?php //foreach($cats as $cat): 
-                  $i = 1;
-                  while($i < 30):?>
+                <?php foreach($donators as $donator):?>
 
                     <div class="col-12 col-sm-6 col-md-3 col-lg-3 ">
                       <div class="card g-3 mx-auto mt-5 mb-5 border border-dark" style="width: 18rem;">
-                          <img src="../photos/cat1.webp" class="card-img-top w-100 h-25" alt="...">
+                        <img src="data:<?php echo htmlspecialchars($donator['photo_type']); ?>;base64,<?php echo base64_encode($donator['photo_data']); ?>" class="card-img-top w-100 h-25" alt="donator photo">
                           <div class="card-body">
-                              <h5 class="card-title">Name</h5>
-                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <h5 class="card-title">Name: <?php echo htmlspecialchars($donator['donator_name']);?></h5>
+                            <p class="card-text"><strong>Donation: </strong><?php echo htmlspecialchars($donator['amount']);?></p>
                               
                               <!-- DESCRIPTION, EDIT & DELETE BUTTONS -->
                               <div class="d-flex justify-content-evenly">
                                 <a href="#" class="btn btn-dark">Details</a>
                                 <a href="../edit/edit-donator.php?id=<?php //echo htmlspecialchars($donatorID['id']);?>" name="editDonator" class="btn btn-dark">Edit</a>
-
-                                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="POST">
-                                  <!-- hidden input to determine what id to be deleted -->
-                                  <input type="hidden" name="id_to_delete" value="<?php //echo htmlspecialchars($donatorID['id']); ?>">
-
-                                  <input type="submit" name="deleteDonator" value="delete" class="btn btn-danger w-100 ">
-                                </form>
+                                <a href="../mysql_queries/delete_donator_query.php?id=<?php echo htmlspecialchars($donator['donator_id']);?>" name="editDonator" class="btn btn-danger">Delete</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <?php $i++; ?>
-                    <?php 
-                  endwhile;
-                  //endforeach;?>
+                  <?php endforeach;?>
             </div>
         </div>
   <?php include('../templates/classicFooter.php'); ?>
