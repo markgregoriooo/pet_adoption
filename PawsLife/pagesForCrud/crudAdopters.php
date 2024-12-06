@@ -41,7 +41,7 @@
                                 <!-- EDIT & DELETE BUTTONS -->
                                 <div class="d-flex justify-content-evenly">
                                   <a href="#" class="btn btn-dark">Details</a>
-                                  <a href="../edit/edit-adopter.php?id=<?php //echo htmlspecialchars($adopter['id']);?>" name="editAdopter" class="btn btn-dark">Edit</a>
+                                  <a href="../edit/edit-adopter.php?id=<?php echo htmlspecialchars($adopter['adopter_id']);?>" name="editAdopter" class="btn btn-dark">Edit</a>
                                   <a href="../mysql_queries/delete_adopter_query.php?id=<?php echo htmlspecialchars($adopter['adopter_id']);?>" name="deleteAdopter" class="btn btn-danger">Delete</a>
 
                                 </div>

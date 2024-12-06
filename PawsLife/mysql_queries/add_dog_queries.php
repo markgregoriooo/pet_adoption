@@ -67,7 +67,7 @@
                 //close the cat table insert statement
                 $stmt->close();
 
-                //  account created
+                //  dog created
                 echo      
                 "<script>
                     alert('Dog successfully added!');

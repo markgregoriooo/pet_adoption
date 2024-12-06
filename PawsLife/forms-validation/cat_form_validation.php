@@ -3,12 +3,12 @@
     $catErrors = array('catName' => '', 'catGender' => '', "catAge" => '', 'cat_date_of_birth' => '', 'color' => '',  'litter_trained' => '', 'indoor' => '' );
 
     // var inst
-    $catNameInput = $catGenderInput = $catAgeInput = $catDateFBirth =  $catColorInput = $catPhotoInput = $litterTrained = $indoor = "";
+    $catNameInput = $catGenderInput = $catAgeInput = $catDateFBirth =  $catColorInput = $litterTrained = $indoor = "";
 
     // default border colors
     $catNameInputBorderColor = $catGenderInputBorderColor = $catAgeInputBorderColor = $catDateFBirthBorderColor =  $catColorInputBorderColor = $catPhotoInputBorderColor  = "border-dark";
 
-    if(isset($_POST['editAdptdPetForm-btn']) || isset($_POST['cat-form-btn']) || isset($_POST['add-cat-form-btn'])){
+    if(isset($_POST['editAdptdPetForm-btn']) || isset($_POST['cat-form-btn']) || isset($_POST['add-cat-form-btn']) || isset($_POST['edit-cat-form-btn']) ){
         //connect to db
         include('../config/db_connect.php');
         // cat name validation

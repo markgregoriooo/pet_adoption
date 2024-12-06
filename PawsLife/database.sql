@@ -136,7 +136,8 @@ CREATE TABLE donators(
 
 -- for donations
 CREATE TABLE donations(
-    donation_id INT AUTO_INCREMENT, 
+    donation_id INT AUTO_INCREMENT,
+    donator_id INT UNSIGNED,
     total DECIMAL(65, 2),            
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 

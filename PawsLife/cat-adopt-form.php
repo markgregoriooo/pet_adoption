@@ -36,7 +36,6 @@
 
      // Close the statement 
      $stmt->close();
-
   }
  //mysql
 ?>

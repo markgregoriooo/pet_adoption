@@ -40,7 +40,7 @@
                             <!-- DESCRIPTION, EDIT & DELETE BUTTONS -->
                             <div class="d-flex justify-content-evenly">
                                 <a href="#" class="btn btn-dark">Details</a>
-                                <a href="../edit/edit-dog.php?id=<?php //echo htmlspecialchars($dogID['id']);?>" name="editDog" class="btn btn-dark">Edit</a>
+                                <a href="../edit/edit-dog.php?id=<?php echo htmlspecialchars($dogID['dog_id']);?>" name="editDog" class="btn btn-dark">Edit</a>
                                 <a href="../mysql_queries/delete_dog_query.php?id=<?php echo htmlspecialchars($dog['pet_id']);?>" name="deleteDog" class="btn btn-danger">Delete</a>
                             </div>
                           </div>

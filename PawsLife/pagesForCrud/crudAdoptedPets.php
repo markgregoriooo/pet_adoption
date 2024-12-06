@@ -55,7 +55,7 @@
                               <!-- DESCRIPTION, EDIT & DELETE BUTTONS -->
                               <div class="d-flex justify-content-evenly">
                                 <a href="#" class="btn btn-dark">Description</a>
-                                <a href="../edit/edit-adopted-pet-cat.php?id=<?php //echo htmlspecialchars($cat['id']);?> " name="editAdoptedPet" class="btn btn-dark">Edit</a>
+                                <a href="../edit/edit-adopted-pet-cat.php?id=<?php echo htmlspecialchars($adopted_pet['adopted_pet_id']);?> " name="editAdoptedPet" class="btn btn-dark">Edit</a>
                                 <a href="../mysql_queries/delete_adopted_pets.php?id=<?php echo htmlspecialchars($cat['adopted_pet_id']);?> " name="deleteAdoptedPet" class="btn btn-danger">Delete</a>
                               </div>
                           </div>

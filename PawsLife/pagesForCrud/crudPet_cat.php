@@ -39,7 +39,7 @@
                               <!-- DESCRIPTION, EDIT & DELETE BUTTONS -->
                               <div class="d-flex justify-content-evenly">
                                   <a href="#" class="btn btn-dark">Details</a>
-                                  <a href="../edit/edit-cat.php?id=<?php //echo htmlspecialchars($catID['id']);?>" name="editCat" class="btn btn-dark">Edit</a>
+                                  <a href="../edit/edit-cat.php?id=<?php echo htmlspecialchars($cat['cat_id']);?>" name="editCat" class="btn btn-dark">Edit</a>
                                   <a href="../mysql_queries/delete_cat_query.php?id=<?php echo htmlspecialchars($cat['pet_id']);?>" name="editCat" class="btn btn-danger">Delete</a>
                               </div>
                           </div>

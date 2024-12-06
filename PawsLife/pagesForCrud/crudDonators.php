@@ -41,7 +41,7 @@
                               <!-- DESCRIPTION, EDIT & DELETE BUTTONS -->
                               <div class="d-flex justify-content-evenly">
                                 <a href="#" class="btn btn-dark">Details</a>
-                                <a href="../edit/edit-donator.php?id=<?php //echo htmlspecialchars($donatorID['id']);?>" name="editDonator" class="btn btn-dark">Edit</a>
+                                <a href="../edit/edit-donator.php?id=<?php echo htmlspecialchars($donator['donator_id']);?>" name="editDonator" class="btn btn-dark">Edit</a>
                                 <a href="../mysql_queries/delete_donator_query.php?id=<?php echo htmlspecialchars($donator['donator_id']);?>" name="editDonator" class="btn btn-danger">Delete</a>
                                 </div>
                             </div>
