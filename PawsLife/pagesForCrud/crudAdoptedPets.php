@@ -13,7 +13,7 @@
       FROM adopted_pets
       INNER JOIN pets ON adopted_pets.pet_id = pets.pet_id
       INNER JOIN adopters ON adopted_pets.adopter_id = adopters.adopter_id
-      WHERE pets.is_deleted = FALSE AND pets.is_adopted = TRUE
+      WHERE pets.is_deleted = FALSE AND pets.is_adopted = TRUE AND adopted_pets.is_deleted = FALSE
       ORDER BY pets.created_at");
 
     //execute
@@ -54,9 +54,8 @@
                               
                               <!-- DESCRIPTION, EDIT & DELETE BUTTONS -->
                               <div class="d-flex justify-content-evenly">
-                                <a href="#" class="btn btn-dark">Description</a>
-                                <a href="../edit/edit-adopted-pet-cat.php?id=<?php echo htmlspecialchars($adopted_pet['adopted_pet_id']);?> " name="editAdoptedPet" class="btn btn-dark">Edit</a>
-                                <a href="../mysql_queries/delete_adopted_pets.php?id=<?php echo htmlspecialchars($cat['adopted_pet_id']);?> " name="deleteAdoptedPet" class="btn btn-danger">Delete</a>
+                                <a href="#" class="btn btn-dark">Details</a>
+                                <a href="../mysql_queries/delete_adopted_pets.php?id=<?php echo htmlspecialchars($adopted_pet['adopted_pet_id']);?> " name="deleteAdoptedPet" class="btn btn-danger">Delete</a>
                               </div>
                           </div>
                       </div>

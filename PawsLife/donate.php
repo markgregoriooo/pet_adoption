@@ -42,7 +42,7 @@
                 <!-- donator amount of donation -->
                 <div class="mb-3">
                     <label for="donate-amount" class="form-label">Donation Amount:<label class="text-danger">&nbsp;*</label></label>
-                    <input type="text" class="form-control w-100 border-dark bg-dark bg-opacity-25" id="donate-amount" name="donate-amount" placeholder="Enter Amount" min="1" value="<?php echo htmlspecialchars($donateAmount); ?>">
+                    <input type="number " class="form-control w-100 border-dark bg-dark bg-opacity-25" id="donate-amount" name="donate-amount" placeholder="Enter Amount" min="1" value="<?php echo htmlspecialchars($donateAmount); ?>">
                     <div class="text-danger"><?php echo htmlspecialchars($donateErrors['amountError']); ?></div>
                 </div>
           

@@ -152,7 +152,7 @@ CREATE TABLE user_sessions (
     session_id VARCHAR(100)     , 
     user_name VARCHAR(50) NOT NULL, -- Foreign key to the user account table
     role ENUM('admin', 'user') NOT NULL,
-    last_activity_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    last_activity_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON DELETE CURRENT_TIMESTAMP,
     PRIMARY KEY(session_id)
 );
 -- when user logs in

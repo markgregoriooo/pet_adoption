@@ -4,7 +4,7 @@
 
   //select into donations 
   //prepared statement for select donations table
-  $stmt = $conn->prepare("SELECT total FROM donations WHERE is_deleted = FALSE ORDER BY created_at LIMIT 1");
+  $stmt = $conn->prepare("SELECT * FROM donations WHERE is_deleted = FALSE ORDER BY created_at LIMIT 1");
   //execute
   if(!$stmt->execute()){
       // if there is/are error, roll back the transaction
@@ -26,7 +26,16 @@
     <section>
       <div class="container-fluid text-center mt-3 mb-3 text-dark p-1 rounded bg-danger" style="height:300px;">
           <h3 class="m-5">TOTAL DONATIONS</h3>
-          <h4><?php echo $donation['total'] ?></h4>
+          <?php 
+            // Check if a donation record was found
+            if ($donation) {
+                // If a donation exists, display the total
+                echo "<h4>" . $donation['total'] . "</h4>";
+            } else {
+                // If no donation record found
+                echo "<h4>No donations found.</h4>";
+            }
+          ?>
       </div>
     </section>
     <section>

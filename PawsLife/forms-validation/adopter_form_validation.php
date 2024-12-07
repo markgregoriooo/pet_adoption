@@ -1,15 +1,15 @@
 <?php
 
     // associative array for adoption-form errors
-    $adoptertErrors = array('fName' => '', 'emailAddress' => '', "address" => '', 'contactNo' => '', 'date_of_birth' => '', 'occupation' => '', 'income' => '', 'gender' => '', 'status' => '', );
+    $adoptertErrors = array('fName' => '', 'emailAddress' => '', "address" => '', 'contactNo' => '', 'date_of_birth' => '', 'occupation' => '', 'income' => '', 'gender' => '', 'status' => '', 'upload_photo' => '' );
 
     // var inst
     $fNameInput = $emailAddInput = $addressInput = $contactNumInput =  $dateOfBirthInput = $occupInput = $incomeInput = $gender = $status = "";
 
     // default border colors
     $fNameInputBorderColor = $emailAddInputBorderColor = $addressInputBorderColor = $contactNumInputBorderColor =  $dateOfBirthInputBorderColor = $occupInputBorderColor = $uploadPhotoBorderColor = $incomeInputBorderColor = "border-dark";
-
-    if(isset($_POST['adopter-form-btn']) || isset($_POST['cat-adoption-form-btn']) || isset($_POST['dog-adoption-form-btn'])){
+    
+    if(isset($_POST['adopter-form-btn']) || isset($_POST['cat-adoption-form-btn']) || isset($_POST['dog-adoption-form-btn']) || isset($_POST['edit-adopter-form-btn'])){
         
         // adopter fwullname validation
         if(empty($_POST['adopter-fullname'])){
@@ -116,17 +116,25 @@
             }
         }
 
+        // validate income field
+        if(!empty($_POST['adopter-income'])){
+            $incomeInput = htmlspecialchars($_POST['adopter-income']);
+            $incomeInputBorderColor =  "border-success border-2";
+        }
 
         // validate gender field
         if(!empty($_POST['adopterGender'])){
             $gender = htmlspecialchars($_POST['adopterGender']);
         }
 
-        // cat status field
+        // validate status field
         if(!empty($_POST['adopterStatus'])){
 
             $status = htmlspecialchars($_POST['adopterStatus']);
         }
+
+       
+
 
 
        

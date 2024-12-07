@@ -49,13 +49,24 @@
             $stmt->execute();
             $stmt->bind_result($total_sum); // total sum
             $stmt->fetch();
+             // Debugging: Check the total sum
+        var_dump($total_sum); // Ensure total_sum is correctly fetched
             //close the parent insert statement
             $stmt->close();
+
+            // Check if any rows exist where is_deleted = FALSE in donations table
+        $check_query = "SELECT * FROM donations WHERE is_deleted = FALSE";
+        $check_stmt = $conn->prepare($check_query);
+        $check_stmt->execute();
+        $check_stmt->store_result();
+        echo "Rows found: " . $check_stmt->num_rows; // Debugging: Check if any rows match the condition
+        $check_stmt->close();   
 
             //update update total donation 
             $stmt = $conn->prepare("UPDATE donations SET total = ? WHERE is_deleted = FALSE");
 
             if($stmt){
+                //bind param
                 $stmt->bind_param("d", $total_sum);
 
                 //execute the stmt insert
@@ -67,6 +78,8 @@
 
                 //close the parent insert statement
                 $stmt->close();
+                // commit transaction
+                $conn->commit();
 
                 //  donated and inserted new donator 
                 echo      
@@ -82,8 +95,7 @@
                 exit;
             }
 
-            // commit the transaction and close the db connection
-            $conn->commit();
+            // close the db connection
             $conn->close();
 
         }

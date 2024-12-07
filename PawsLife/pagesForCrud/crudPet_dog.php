@@ -4,7 +4,7 @@
 
     //select into cats
     //prepared statement for select dogs table
-    $stmt = $conn->prepare("SELECT * FROM dogs INNER JOIN pets ON dogs.dog_id = pets.pet_id WHERE pets.is_deleted = FALSE ORDER BY created_at");
+    $stmt = $conn->prepare("SELECT * FROM dogs INNER JOIN pets ON dogs.pet_id = pets.pet_id WHERE pets.is_deleted = FALSE ORDER BY created_at");
 
     //execute
     if(!$stmt->execute()){
@@ -40,7 +40,7 @@
                             <!-- DESCRIPTION, EDIT & DELETE BUTTONS -->
                             <div class="d-flex justify-content-evenly">
                                 <a href="#" class="btn btn-dark">Details</a>
-                                <a href="../edit/edit-dog.php?id=<?php echo htmlspecialchars($dogID['dog_id']);?>" name="editDog" class="btn btn-dark">Edit</a>
+                                <a href="../edit/edit-dog.php?id=<?php echo htmlspecialchars($dog['dog_id']);?>" name="editDog" class="btn btn-dark">Edit</a>
                                 <a href="../mysql_queries/delete_dog_query.php?id=<?php echo htmlspecialchars($dog['pet_id']);?>" name="deleteDog" class="btn btn-danger">Delete</a>
                             </div>
                           </div>

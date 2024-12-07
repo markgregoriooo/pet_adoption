@@ -1,13 +1,7 @@
 <?php
-  // Check if session has already been started
-  if (session_status() == PHP_SESSION_NONE) {
-    session_start(); // Start the session if not already started
-  }
-
 
   // form validation
   include('../forms-validation/cat_form_validation.php');
-
   //mysql query
   include('../mysql_queries/edit_cat_query.php');
 
@@ -27,7 +21,6 @@
      if(!$stmt->execute()){
          // if there is/are error, roll back the transaction
          echo "Error preparing the parent insert statement: " . $stmt->error;
-         $conn->rollback();
          exit;
      }
      // Get the result
@@ -35,12 +28,12 @@
      
      // Fetch a single row
      $cat = $result->fetch_assoc(); // Fetch the first row as an associative array
-     $_SESSION['pet_id-edit'] = $cat['pet_id']; //  store the pet id to the session var  
+     $_SESSION['pet_id_edit'] = $cat['pet_id']; //  store the pet id to the session var  
 
      // Close the statement 
      $stmt->close();
-
-  }
+      
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

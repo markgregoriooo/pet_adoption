@@ -1,7 +1,7 @@
 <?php 
     $donatorFname = $donatorEmail = $donateAmount = '';
-    $donateErrors = array('donatorFullnameError' => '', 'donatorEmailError' => '', 'amountError' => '');
-    if(isset($_POST['donate-btn'])){
+    $donateErrors = array('donatorFullnameError' => '', 'donatorEmailError' => '', 'amountError' => '', 'donator_photo' => '');
+    if(isset($_POST['donate-btn']) || isset($_POST['edit-donator-form-btn'])){
       
       //check full name
       if(empty($_POST['donator-fullname'])){
@@ -27,12 +27,10 @@
       if(empty($_POST['donate-amount'])){
         $donateErrors['amountError'] = "* An Amount is required. Minimum 1 PHP.";
       }else{
-        $donateAmount = htmlspecialchars($_POST['donate-amount']);
-        if(!preg_match("/^\d{1,3}(?:,\d{3})*(?:\.\d{1,2})?$/ ", $donateAmount)){
-          $donateErrors['amountError'] = "* Invalid format. Please enter a valid amount (e.g., 1,234.56).";
-        }
+        $donateAmount = $_POST['donate-amount'];
       }
-
+      
+      
   
   
     }

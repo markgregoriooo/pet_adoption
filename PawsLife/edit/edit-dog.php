@@ -1,27 +1,66 @@
 <?php
+  //form validation
   include('../forms-validation/dog_form_validation.php');
+  //form validation
+  include('../mysql_queries/edit_dog_query.php');
+
+  if (isset($_GET['id'])) {
+
+    // connect to db
+   include('../config/db_connect.php');
+
+   $dog_id = $_GET['id'];  // Get the ID from the UR
+
+   $_SESSION['dogID'] = $dog_id; //  store the dog id to the session var 
+
+   //prepared statement for select dogs table
+   $stmt = $conn->prepare("SELECT * FROM dogs INNER JOIN pets ON dogs.pet_id = pets.pet_id WHERE pets.is_deleted = FALSE AND dogs.dog_id = ? ORDER BY pets.created_at LIMIT 1");
+   $stmt->bind_param("i", $dog_id);  // bind the dog id to the prepared statement
+   //execute
+   if(!$stmt->execute()){
+       // if there is/are error, roll back the transaction
+       echo "Error preparing the parent insert statement: " . $stmt->error;
+       exit;
+   }
+   // Get the result
+   $result = $stmt->get_result();
+   
+   // Fetch a single row
+   $dog = $result->fetch_assoc(); // Fetch the first row as an associative array
+   $_SESSION['pet_id_edit'] = $dog['pet_id']; //  store the pet id to the session var  
+
+   // Close the statement 
+   $stmt->close();
+    
+    }   
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <?php include('../templates/classicHeader.php'); ?>
-        <section>
-
-            <div class="container mb-2 mt-3 p-2 border border-dark">
-                <div class="d-flex">
-                    <img src="../photos/dog2.jpg" class="w-25 h-50 ms-5 mt-3 border border-dark " alt="...">
-                    <div class="container border border-dark ms-5 overflow-scroll" style="max-height: 500px;">
-                        <h5 class="">Name</h5>
-                        <p class="">Some quick example text to build on the card title and make up the bulk of the card's content. Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita maiores excepturi magni totam consequatur deserunt, provident labore enim! Sol</p>
-                        <p class="">Some quick example text to build on the card title and make up the bulk of the card's content. Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita maiores excepturi magni totam consequatur deserunt, provident labore enim! Sol</p>
-                        <h5 class="">Name</h5>
-                        <p class="">Some quick example text to build on the card title and make up the bulk of the card's content. Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita maiores excepturi magni totam consequatur deserunt, provident labore enim! Sol</p>
-                        <p class="">Some quick example text to build on the card title and make up the bulk of the card's content. Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita maiores excepturi magni totam consequatur deserunt, provident labore enim! Sol</p>
-                        
-                    </div>  
-                </div>
+    <section>
+        <?php if(!isset($_POST['edit-dog-form-btn'])): ?>
+        <div class="container mb-2 mt-3 p-2 border border-dark">
+            <div class="d-flex">
+              <img src="data:<?php echo htmlspecialchars($dog['photo_type']); ?>;base64,<?php echo base64_encode($dog['photo_data']); ?>" class="w-25 h-50 ms-5 mt-3 border border-dark" alt="dog photo">
+              <div class="container border border-dark ms-5 overflow-scroll" style="max-height: 500px;">
+                  <h5 class="display-6">Name: <strong><?php echo htmlspecialchars($dog['pet_name']) ?></strong></h5>
+                  <h6 class="">Gender: <strong><?php echo htmlspecialchars($dog['gender']) ?></strong></h6>
+                  <h6 class="">Age: <strong><?php echo htmlspecialchars($dog['age']) ?></strong></h6>
+                  <h6 class="">Date of Birth: <strong><?php echo htmlspecialchars($dog['date_of_birth']) ?></strong></h6>
+                  <h6 class="">Leash trained: <strong><?php echo htmlspecialchars($dog['is_leash_trained']) ?></strong></h6>
+                  <h6 class="">Size: <strong><?php echo htmlspecialchars($dog['dog_size']) ?></strong></h6>
+                  <h6 class="">Crated at: <strong><?php echo htmlspecialchars($dog['created_at']) ?></strong></h6>
+                  <h6 class="">Updated at: <strong><?php echo htmlspecialchars($dog['updated_at']) ?></strong></h6>
+                  <h6 class="">Deleted: <strong><?php echo htmlspecialchars($dog['is_deleted']) ?></strong></h6>
+                  <h6 class="">Photo name: <strong><?php echo htmlspecialchars($dog['photo_name']) ?></strong></h6>
+                  <h6 class="">Photo type: <strong><?php echo htmlspecialchars($dog['photo_type']) ?></strong></h6>
+                  <h6 class="">Photo size: <strong><?php echo htmlspecialchars($dog['photo_size']) ?></strong></h6>
+              </div>  
             </div>
+        </div>
+        <?php endif;?>
 
-        </section>
+      </section>
         <section id="edit-dog-form">
             <div class="container-fluid pb-2">
 
@@ -73,8 +112,8 @@
                         <!-- photo data -->
                         <div class="col-lg-5 col-12 mb-3">
                             <label for="dog_photo" class="form-label d-flex">Upload New photo<label class="text-danger">&nbsp;*</label></label>
-                            <input type="file" class="form-control w-100  bg-dark bg-opacity-25 <?php echo $dogPhotoInputBorderColor?>" id="dog_photo" name="dog_photo" accept="image/*" value="<?php echo htmlspecialchars($dogNameInput); ?>">
-                            <div class="text-danger"><?php echo htmlspecialchars($dogErrors['upload_photo']); ?></div>
+                            <input type="file" class="form-control w-100  bg-dark bg-opacity-25 <?php echo $dogPhotoInputBorderColor?>" id="dog_photo" name="dog_photo" accept="image/*">
+                            <div class="text-danger"><?php echo htmlspecialchars($dogErrors['dog_photo']); ?></div>
                         </div>
 
 
@@ -86,13 +125,13 @@
                             <!-- yes -->
                             <div class="form-check form-check-inline me-3">
                                 <label class="form-check-label" for="dog-leash-trained">Yes</label>
-                            <input class="form-check-input" type="radio" name="isLeashTrained" id="dog-leash-trained" value="leash-trained">
+                            <input class="form-check-input" type="radio" name="isLeashTrained" id="dog-leash-trained" value="1">
                             </div>
 
                             <!-- no -->
                             <div class="form-check form-check-inline me-3">
                                 <label  class="form-check-label" for="dog-not-leash-trained">No</label>
-                            <input class="form-check-input" type="radio" name="isLeashTrained" id="dog-not-leash-trained" value="not-leash-trained">
+                            <input class="form-check-input" type="radio" name="isLeashTrained" id="dog-not-leash-trained" value="0">
                             </div>
 
                             </fieldset>

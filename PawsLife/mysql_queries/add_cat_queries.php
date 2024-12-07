@@ -1,6 +1,6 @@
 <?php 
     // if the submit button was submitted and if there's an uploaded photo and there is no error 
-    if(isset($_POST['add-cat-form-btn']) && isset($_FILES['cat_photo']) && $_FILES['cat_photo']['error'] == 0 ){
+    if( isset($_FILES['cat_photo']) && $_FILES['cat_photo']['error'] == 0 ){
 
         //if there is no error in an errors array
         if(!array_filter($catErrors)){
