@@ -68,13 +68,13 @@
                               <!-- yes -->
                               <div class="form-check form-check-inline me-3">
                                   <label class="form-check-label" for="dog-leash-trained">Yes</label>
-                              <input class="form-check-input" type="radio" name="isLeashTrained" id="dog-leash-trained" value="1">
+                              <input class="form-check-input" type="radio" name="isLeashTrained" id="dog-leash-trained" value='yes'>
                               </div>
 
                               <!-- no -->
                               <div class="form-check form-check-inline me-3">
                                   <label  class="form-check-label" for="dog-not-leash-trained">No</label>
-                              <input class="form-check-input" type="radio" name="isLeashTrained" id="dog-not-leash-trained" value="0">
+                              <input class="form-check-input" type="radio" name="isLeashTrained" id="dog-not-leash-trained" value='no'>
                               </div>
 
                               </fieldset>
