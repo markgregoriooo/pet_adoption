@@ -40,7 +40,22 @@
 
                                 <!-- EDIT & DELETE BUTTONS -->
                                 <div class="d-flex justify-content-evenly">
-                                  <a href="#" class="btn btn-dark">Details</a>
+                                  <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#adopter_details"
+                                        data-adopter-id="<?php echo htmlspecialchars($adopter['adopter_id']); ?>"
+                                        data-adopter-name="<?php echo htmlspecialchars($adopter['adopter_name']); ?>"
+                                        data-adopter-email="<?php echo htmlspecialchars($adopter['adopter_email']); ?>"
+                                        data-adopter-income="<?php echo htmlspecialchars($adopter['adopter_income']); ?>"
+                                        data-adopter-address="<?php echo htmlspecialchars($adopter['adopter_address']); ?>"
+                                        data-adopter-contact="<?php echo htmlspecialchars($adopter['adopter_phone_number']); ?>"
+                                        data-adopter-dob="<?php echo htmlspecialchars($adopter['date_of_birth']); ?>"
+                                        data-adopter-occup="<?php echo htmlspecialchars($adopter['occupation']); ?>"
+                                        data-adopter-gender="<?php echo htmlspecialchars($adopter['gender']); ?>"
+                                        data-adopter-status="<?php echo htmlspecialchars($adopter['adopter_status']); ?>"
+                                        data-adopter-created="<?php echo htmlspecialchars($adopter['created_at']); ?>"
+                                        >Details
+                                  </button>
+                                  <!-- include modal -->
+                                  <?php include('../modals/adopter_details.php') ?>
                                   <a href="../edit/edit-adopter.php?id=<?php echo htmlspecialchars($adopter['adopter_id']);?>" name="editAdopter" class="btn btn-dark">Edit</a>
                                   <a href="../mysql_queries/delete_adopter_query.php?id=<?php echo htmlspecialchars($adopter['adopter_id']);?>" name="deleteAdopter" class="btn btn-danger">Delete</a>
 

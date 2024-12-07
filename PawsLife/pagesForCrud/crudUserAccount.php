@@ -44,7 +44,16 @@
                               
                               <!-- DESCRIPTION, EDIT & DELETE BUTTONS -->
                               <div class="d-flex justify-content-evenly">
-                                <a href="#" class="btn btn-dark">Details</a>
+                                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#user_acc_details"
+                                        data-user-acc-id="<?php echo htmlspecialchars($user_acc['user_acc_id']); ?>"
+                                        data-user-acc-username="<?php echo htmlspecialchars($user_acc['username']); ?>"
+                                        data-user-acc-password="<?php echo htmlspecialchars($user_acc['user_password_hash']); ?>"
+                                        data-user-acc-email="<?php echo htmlspecialchars($user_acc['user_email']); ?>"
+                                        data-user-acc-created="<?php echo htmlspecialchars($user_acc['created_at']); ?>"
+                                        >Details
+                                </button>
+                                <!-- include modal -->
+                                <?php include('../modals/user_acc_details.php') ?>
                                 <a href="../mysql_queries/delete_user_acc_query.php?id=<?php echo htmlspecialchars($user_acc['user_acc_id']);?>" name="deleteAdopter" class="btn btn-danger">Delete</a>
                               </div>
                           </div>

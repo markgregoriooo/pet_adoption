@@ -17,7 +17,7 @@
     // fetch the resulting rows as an array
     $cats = $result->fetch_all(MYSQLI_ASSOC);
     // Close the statement 
-    $stmt->close();
+    $stmt->close()
 //  mysql for deletion
 ?>
 
@@ -38,9 +38,20 @@
                               <p class="card-text"><strong>Gender: </strong><?php echo htmlspecialchars($cat['gender']);?></p>
                               <!-- DESCRIPTION, EDIT & DELETE BUTTONS -->
                               <div class="d-flex justify-content-evenly">
-                                  <a href="#" class="btn btn-dark">Details</a>
-                                  <a href="../edit/edit-cat.php?id=<?php echo htmlspecialchars($cat['cat_id']);?>" name="editCat" class="btn btn-dark">Edit</a>
-                                  <a href="../mysql_queries/delete_cat_query.php?id=<?php echo htmlspecialchars($cat['pet_id']);?>" name="editCat" class="btn btn-danger">Delete</a>
+                              <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#cat_details"
+                                      data-cat-id="<?php echo htmlspecialchars($cat['cat_id']); ?>"
+                                      data-cat-name="<?php echo htmlspecialchars($cat['pet_name']); ?>"
+                                      data-cat-gender="<?php echo htmlspecialchars($cat['gender']); ?>"
+                                      data-cat-age="<?php echo htmlspecialchars($cat['age']); ?>"
+                                      data-cat-dob="<?php echo htmlspecialchars($cat['date_of_birth']); ?>"
+                                      data-cat-adopted="<?php echo htmlspecialchars($cat['is_adopted']); ?>"
+                                      data-cat-created="<?php echo htmlspecialchars($cat['created_at']); ?>"
+                                      >Details
+                              </button>
+                              <!-- include modal -->
+                                <?php include('../modals/cat_details.php') ?> 
+                                <a href="../edit/edit-cat.php?id=<?php echo htmlspecialchars($cat['cat_id']);?>" name="editCat" class="btn btn-dark">Edit</a>
+                                <a href="../mysql_queries/delete_cat_query.php?id=<?php echo htmlspecialchars($cat['pet_id']);?>" name="editCat" class="btn btn-danger">Delete</a>
                               </div>
                           </div>
                         </div>
@@ -48,5 +59,7 @@
                     <?php endforeach;?>
             </div>
         </div>
+
+  
   <?php include('../templates/classicFooter.php') ?>
 </html>

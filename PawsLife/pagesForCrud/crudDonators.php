@@ -20,7 +20,6 @@
   $stmt->close();
 //  mysql for deletion
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <?php include('../templates/classicHeader.php'); ?>
@@ -40,7 +39,16 @@
                               
                               <!-- DESCRIPTION, EDIT & DELETE BUTTONS -->
                               <div class="d-flex justify-content-evenly">
-                                <a href="#" class="btn btn-dark">Details</a>
+                              <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#donator_details"
+                                      data-donator-id="<?php echo htmlspecialchars($donator['donator_id']); ?>"
+                                      data-donator-name="<?php echo htmlspecialchars($donator['donator_name']); ?>"
+                                      data-donator-email="<?php echo htmlspecialchars($donator['donator_email']); ?>"
+                                      data-donator-amount="<?php echo htmlspecialchars($donator['amount']); ?>"
+                                      data-donator-created="<?php echo htmlspecialchars($donator['created_at']); ?>"
+                                      >Details
+                              </button>
+                              <!-- include modal -->
+                                <?php include('../modals/donator_details.php') ?>
                                 <a href="../edit/edit-donator.php?id=<?php echo htmlspecialchars($donator['donator_id']);?>" name="editDonator" class="btn btn-dark">Edit</a>
                                 <a href="../mysql_queries/delete_donator_query.php?id=<?php echo htmlspecialchars($donator['donator_id']);?>" name="editDonator" class="btn btn-danger">Delete</a>
                                 </div>
