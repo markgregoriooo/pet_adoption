@@ -33,7 +33,7 @@
             $stmt = $conn->prepare("INSERT INTO adopters(adopter_name, adopter_email, adopter_income, adopter_address, adopter_phone_number, date_of_birth, occupation, gender, adopter_status, photo_name, photo_data, photo_size, photo_type) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
             if($stmt){
-                $stmt->bind_param("ssdssssssssis", $fNameInput, $emailAddInput, $addressInput, $contactNumInput, $dateOfBirthInput, $occupInput, $incomeInput, $gender, $status, $fileName, $fileData, $fileSize, $fileType);
+                $stmt->bind_param("ssdssssssssis", $fNameInput, $emailAddInput, $incomeInput, $addressInput, $contactNumInput, $dateOfBirthInput, $occupInput, $gender, $status, $fileName, $fileData, $fileSize, $fileType);
 
                 //execute the parent insert
                 if($stmt->execute()){

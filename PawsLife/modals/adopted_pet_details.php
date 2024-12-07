@@ -17,8 +17,8 @@
                     <p><strong>Adoption Date:</strong> <span id="adopted_pet_adoption_date"></span></p>
                     <p><strong>Adopter Name:</strong> <span id="modal_adopter_name"></span></p>
                     <p><strong>Adopter Email:</strong> <span id="modal_adopter_email"></span></p>
-                    <p><strong>Adopter Address:</strong> <span id="modal_adopter_address"></span></p>
-                    <p><strong>Adopter Contact no:</strong> <span id="modal_adopter_contact"></span></p>
+                    <p><strong>Adopter Address:</strong> <span id="modal_adopter_contact"></span></p>
+                    <p><strong>Adopter Contact no:</strong> <span id="modal_adopter_address"></span></p>
 
                 </div>
                 <div class="modal-footer">
