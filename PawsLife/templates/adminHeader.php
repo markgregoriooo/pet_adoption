@@ -49,7 +49,7 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <!-- Button to trigger modal -->
-                            <button type="button" class="btn btn-link text-light text-decoration-none fs-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <button type="button" class="btn btn-link text-light text-decoration-none fs-5" data-bs-toggle="modal" data-bs-target="#adminLogOut">
                             <i class="fa-solid fa-right-from-bracket"></i> Visit site
                             </button>
                         </li>
@@ -59,7 +59,7 @@
         </nav>
 
         <!-- Log out Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="adminLogOut" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">

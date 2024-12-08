@@ -1,3 +1,9 @@
+<?php 
+    // Check if session is already started, if not, start it
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,9 +29,12 @@
 
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item" id="header-nav-bg">
-                            <a href="admin-login.php" class="nav-link ">Admin</a>
-                        </li>
+                        <!-- If user is not logged in, show Admin link -->
+                        <?php if (!isset($_SESSION['loggedin'])): ?>
+                            <li class="nav-item" id="header-nav-bg">
+                                <a href="admin-login.php" class="nav-link">Admin</a>
+                            </li>
+                        <?php endif; ?>
                         <li class="nav-item" id="header-nav-bg">
                             <a href="index.php" class="nav-link " >Home</a>
                         </li>
@@ -35,11 +44,46 @@
                         <li class="nav-item" id="header-nav-bg">
                             <a href="donate.php" class="nav-link ">Donate</a>
                         </li>
-                        <li class="nav-item" id="header-nav-bg">
-                            <a href="#" class="nav-link ">Contact Us</a>
-                        </li>
+                        <!-- If user is logged in, show welcome message and log out button -->
+                        <?php if (isset($_SESSION['loggedin'])): ?>
+                            <li class="nav-item" id="header-nav-bg">
+                                <!-- Button to trigger modal -->
+                                <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#userLogout">
+                                <i class="fa-solid fa-right-from-bracket"></i> Log out
+                                </button>
+                            </li>
+                        <?php endif; ?>
+                    </ul class="navbar-nav ms-auto">
+                    <ul>
+
                     </ul>
                 </div>
             </div>
         </nav>
+        <!-- Log out Modal -->
+        <div class="modal fade" id="userLogout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to log out?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
+                <button type="button" class="btn btn-danger" id="yesButton">Yes</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <script>
+            // Add event listener for "Yes" button
+            document.getElementById('yesButton').addEventListener('click', function() {
+                // Redirect to logout.php page 
+                window.location.href = 'logout.php'; // Replace with your target URL
+            });
+        </script>
     </header>

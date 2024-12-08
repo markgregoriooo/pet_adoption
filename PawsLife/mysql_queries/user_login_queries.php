@@ -1,4 +1,6 @@
 <?php 
+    session_start(); // Start the session at the beginning
+
     if(isset($_POST['login'])){
 
         if(!array_filter($adoptErrors)){
@@ -24,11 +26,18 @@
 
             // Check if the username exists
             if ($stmt->fetch()) {
-
+                $_SESSION['username'] = htmlspecialchars($username_result); // store username in session
                 // Username exists, now check the password
                 if (password_verify($adoptPassword, $password_hash_result)) {
                     // Password is correct, redirect to the adoption page
-                    header('Location: adopt.php');
+                    $_SESSION['username'] = htmlspecialchars($username_result); // Store username in session
+                    $_SESSION['loggedin'] = true; // indication the user logged in
+                    //redirect to the admin page
+                    echo 
+                    "<script>
+                        alert('Welcome, ' + '" . htmlspecialchars($_SESSION['username']) . "');
+                        window.location.href = 'adopt.php'; 
+                    </script>";
                     exit();
                 } else {
                     // Incorrect password, handle the error

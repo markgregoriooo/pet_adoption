@@ -1,6 +1,4 @@
 <?php 
-    session_start(); // Start the session at the beginning
-    $_SESSION['username'] = "";
 
     // default variable varlues
     $username = $adoptPassword = "";
@@ -26,7 +24,6 @@
         } else {
             $username = mysqli_real_escape_string($conn, $_POST['adopt-username']);
             $borderColorUsername = "border-success border-2";
-            $_SESSION['username'] = htmlspecialchars($username); // store username in session
         }
     
         // Check if password is empty
@@ -36,15 +33,6 @@
         } else {
             $adoptPassword = $_POST['adopt-password'];  
             $borderColorPassw = "border-success border-2";
-            $_SESSION['username'] = $username; // Store username in session
-            $_SESSION['loggedin'] = true; // indication the user logged in
-            //redirect to the admin page
-            echo 
-            "<script>
-                alert('Welcome, ' + '" . htmlspecialchars($_SESSION['username']) . "');
-                window.location.href = 'adopt.php'; 
-            </script>";
-            exit();
         }
 
         
