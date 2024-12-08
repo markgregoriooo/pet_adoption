@@ -4,15 +4,8 @@ body{
     font-size: 1rem;
     line-height: 1.6;
 }
-h1, h2, h3 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-}
-p {
-    font-size: 1.125rem; /* Slightly larger text for readability */
-    line-height: 1.8;
-    color: #555; /* Soft dark gray for less contrast than black */
-}
+
+
 .btn {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;

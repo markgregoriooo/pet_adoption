@@ -21,7 +21,7 @@
             // Open the file and read the content
             $fileData = file_get_contents($fileTmpPath);  // Read the file data into a variable
 
-            //insert into pets table
+            //insert into donators table
             $stmt = $conn->prepare("INSERT INTO donators(donator_name, donator_email, amount, photo_name, photo_data, photo_size, photo_type) VALUES(?, ?, ?, ?, ?, ?, ?)");
 
             if($stmt){
@@ -31,9 +31,12 @@
                 if(!$stmt->execute()){
                     // if there is/are error, roll back the transaction
                     echo "Error preparing the parent insert statement: " . $stmt->error;
+                    $conn->rollback();
                     exit;
                 }
-                //close the parent insert statement
+
+                $donator_id = $conn->insert_id; // get last inserted donator id
+                //close the donator insert statement
                 $stmt->close();
 
             }else{
@@ -43,41 +46,21 @@
                 exit;
             }
 
-            //calculate the total amount from the 'donators' table
-            $query = "SELECT SUM(amount) FROM donators WHERE is_deleted = FALSE "; 
-            $stmt = $conn->prepare($query);
-            $stmt->execute();
-            $stmt->bind_result($total_sum); // total sum
-            $stmt->fetch();
-             // Debugging: Check the total sum
-        var_dump($total_sum); // Ensure total_sum is correctly fetched
-            //close the parent insert statement
-            $stmt->close();
 
-            // Check if any rows exist where is_deleted = FALSE in donations table
-        $check_query = "SELECT * FROM donations WHERE is_deleted = FALSE";
-        $check_stmt = $conn->prepare($check_query);
-        $check_stmt->execute();
-        $check_stmt->store_result();
-        echo "Rows found: " . $check_stmt->num_rows; // Debugging: Check if any rows match the condition
-        $check_stmt->close();   
-
-            //update update total donation 
-            $stmt = $conn->prepare("UPDATE donations SET total = ? WHERE is_deleted = FALSE");
+            //insert into donations table
+            $stmt = $conn->prepare("INSERT INTO donations(donator_id, total) VALUES(?, 0 )");
 
             if($stmt){
-                //bind param
-                $stmt->bind_param("d", $total_sum);
+                $stmt->bind_param("i", $donator_id);
 
                 //execute the stmt insert
                 if(!$stmt->execute()){
                     // if there is/are error, roll back the transaction
                     echo "Error preparing the parent insert statement: " . $stmt->error;
+                    $conn->rollback();
                     exit;
                 }
-
-                //close the parent insert statement
-                $stmt->close();
+                
                 // commit transaction
                 $conn->commit();
 
@@ -87,7 +70,8 @@
                     alert('Thank you for your donation.');
                     window.location.href = 'donate.php';
                 </script>";
-
+                // close the db connection
+                $conn->close();
             }else{
                 // if there is/are error, roll back the transaction
                 echo "Error preparing the parent insert statement: " . $stmt->error;
@@ -95,8 +79,9 @@
                 exit;
             }
 
-            // close the db connection
-            $conn->close();
+
+           
+            
 
         }
     }
