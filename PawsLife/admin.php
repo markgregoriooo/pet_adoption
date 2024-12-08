@@ -77,7 +77,7 @@
         <section id="adopted-pets-database">
         <div class="bg-dark container mb-5 p-3 ">
             <h2 style="color: bisque;">User Accounts</h2>        
-            <div class="table-responsive">
+            <div style="max-height: 400px; overflow-y: auto; overflow-x: auto;">
             <table class="table table-striped table-hover table-success table-bordered">
             <thead class="table-warning">
                 <tr>
@@ -113,7 +113,7 @@
         <section id="adopters-database">
         <div class="bg-dark container mt-3 mb-5 p-3 ">
             <h2 style="color: bisque;">Adopters</h2>        
-            <div class="table-responsive">
+            <div style="max-height: 400px; overflow-y: auto; overflow-x: auto;">
             <table class="table table-striped table-hover table-success table-bordered">
             <thead class="table-warning">
                 <tr>
@@ -161,8 +161,7 @@
         <section id="adopted-pets-database">
         <div class="bg-dark container mt-3 mb-5 p-3 ">
             <h2 style="color: bisque;">Adopted Pets</h2>        
-            <div class="table-responsive">
-            <div class="table-responsive">
+            <div style="max-height: 400px; overflow-y: auto; overflow-x: auto;">
             <table class="table table-striped table-hover table-success table-bordered">
             <thead class="table-warning">
                 <tr>
@@ -201,7 +200,7 @@
         <section id="cats-database">
         <div class="bg-dark container mt-3 mb-5 p-3 ">
             <h2 style="color: bisque;">Cats</h2>        
-            <div class="table-responsive">
+            <div style="max-height: 400px; overflow-y: auto; overflow-x: auto;">
             <table class="table table-striped table-hover table-success table-bordered">
             <thead class="table-warning">
                 <tr>
@@ -232,7 +231,7 @@
         <section id="dogs-database">
         <div class="bg-dark container mt-3 mb-5 p-3 ">
             <h2 style="color: bisque;">Dogs</h2>        
-            <div class="table-responsive">
+            <div style="max-height: 400px; overflow-y: auto; overflow-x: auto;">
             <table class="table table-striped table-hover table-success table-bordered">
             <thead class="table-warning">
                 <tr>
@@ -262,7 +261,7 @@
         <section id="donators-database">
         <div class="bg-dark container mt-3 mb-5 p-3 ">
             <h2 style="color: bisque;">Donators</h2>        
-            <div class="table-responsive">
+            <div style="max-height: 400px; overflow-y: auto; overflow-x: auto;">
             <table class="table table-striped table-hover table-success table-bordered">
             <thead class="table-warning">
                 <tr>

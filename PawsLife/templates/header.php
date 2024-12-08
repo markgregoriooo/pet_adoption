@@ -46,9 +46,11 @@
                                 <a href="index.php" class="nav-link " >Home</a>
                             </li>
                         <?php endif; ?>
+                        <?php if (!isset($_SESSION['loggedin'])): ?>
                         <li class="nav-item" id="header-nav-bg">
                             <a href="adopt-login.php" class="nav-link ">Adopt</a>
                         </li>
+                        <?php endif; ?>
                         <li class="nav-item" id="header-nav-bg">
                             <a href="donate.php" class="nav-link ">Donate</a>
                         </li>
