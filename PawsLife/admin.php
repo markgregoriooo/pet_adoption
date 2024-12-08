@@ -1,4 +1,13 @@
 <?php
+    // Check if the session has already started
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+        header('Location: admin-login.php'); // Redirect to admin login page if not logged in
+        exit();
+    }
     // connect to database
     include('config/db_connect.php');
 
@@ -64,7 +73,7 @@
 <html lang="en">
  <?php include('templates/adminHeader.php') ?>
     <section class=" pt-5 pb-3 bg-secondary">
-
+    
         <section id="adopted-pets-database">
         <div class="bg-dark container mb-5 p-3 ">
             <h2 style="color: bisque;">User Accounts</h2>        

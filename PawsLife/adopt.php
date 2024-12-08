@@ -3,8 +3,14 @@
   if (session_status() == PHP_SESSION_NONE) {
     session_start(); // Start the session if not already started
   }
+
+  if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header('Location: adopt-login.php'); // Redirect to adopt login page if not logged in
+    exit();
+    }
+    
     // query to display available pets for adoption
-    include('mysql_queries/display_dogs&cats_query.php');
+   include('mysql_queries/display_dogs&cats_query.php');
  
 ?>
 <!DOCTYPE html>

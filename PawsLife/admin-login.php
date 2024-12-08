@@ -1,7 +1,12 @@
 <?php 
-  // admin username & password
+  session_start(); // start session
+
+  //admin username
   define("USERNAME", "admin");
-  define("PASSWORD","petadoption123");
+
+  // Hash the admin password 
+  define("PASSWORD_HASHED", password_hash("petadoption123", PASSWORD_BCRYPT));
+
   // assoc array for errors
   $adminAccErrors = array('adminUsername'=>'', 'adminPassword'=>'');
 
@@ -29,7 +34,8 @@
       }else{
 
         $borderColorUsername = "border-success border-2";
-
+        $_SESSION['username'] = htmlspecialchars($usernameInput); // store username in session
+        
       }
     }
 
@@ -42,9 +48,8 @@
     }else{
 
       $passwordInput = htmlspecialchars($_POST['admin-password']);
-      $passwordInput = strtolower($passwordInput);
 
-      if($passwordInput !== PASSWORD){
+      if(!password_verify($passwordInput, PASSWORD_HASHED)){
 
         $adminAccErrors['adminPassword'] = "* Wrong Password";
         $borderColorPass = "border-danger border-2";
@@ -52,6 +57,15 @@
       }else{
 
         $borderColorPass = "border-success border-2";
+        $_SESSION['username'] = $usernameInput; // Store username in session
+        $_SESSION['loggedin'] = true; // indication the user logged in
+        //redirect to the admin page
+        echo 
+        "<script>
+            alert('Welcome, Admin!');
+            window.location.href = 'admin.php'; 
+        </script>";
+        exit();
       }
     }
 
@@ -61,13 +75,6 @@
         $usernameInput = htmlspecialchars($_POST['admin-username']);
         $passwordInput = htmlspecialchars($_POST['admin-password']);
 
-    }else{
-
-      echo "<script>
-            alert('Welcome, Admin!');
-            window.location.href = 'admin.php';
-            </script>
-            ";
     }
   }
 ?>

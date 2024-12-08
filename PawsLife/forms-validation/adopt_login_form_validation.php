@@ -25,7 +25,8 @@
             $borderColorUsername = "border-danger border-2";
         } else {
             $username = mysqli_real_escape_string($conn, $_POST['adopt-username']);
-            $borderColorUsername = "border-primary border-2";
+            $borderColorUsername = "border-success border-2";
+            $_SESSION['username'] = htmlspecialchars($username); // store username in session
         }
     
         // Check if password is empty
@@ -34,7 +35,16 @@
             $borderColorPassw = "border-danger border-2";
         } else {
             $adoptPassword = $_POST['adopt-password'];  
-            $borderColorPassw = "border-primary border-2";
+            $borderColorPassw = "border-success border-2";
+            $_SESSION['username'] = $username; // Store username in session
+            $_SESSION['loggedin'] = true; // indication the user logged in
+            //redirect to the admin page
+            echo 
+            "<script>
+                alert('Welcome, ' + '" . htmlspecialchars($_SESSION['username']) . "');
+                window.location.href = 'adopt.php'; 
+            </script>";
+            exit();
         }
 
         

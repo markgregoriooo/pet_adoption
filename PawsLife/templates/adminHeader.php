@@ -1,5 +1,8 @@
-<?php
-   
+<?php 
+    // Check if session is already started, if not, start it
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
 ?>
 <head>
     <meta charset="UTF-8">
@@ -19,6 +22,7 @@
                     <img src="photos/icon&logo.jpg" alt="logo" id="logo" class="me-2">
                     <h1 class="text-light mb-0" id="logo-title">Paws Life</h1>
                 </a>
+                 
                 <!-- dropdown menu for Options -->
                     <div class="btn-group m-2">
                         <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -40,14 +44,45 @@
                             <li><a class="dropdown-item" href="pagesForCrud/crudDonators.php">Donators</a></li>
                         </ul>
                     </div>
+                        
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a href="index.php"  id="admin-nav">Visit site</a>
-                            <a href="index.php" class="fa-solid fa-house ms-1" id="home-icon"></a>
+                            <!-- Button to trigger modal -->
+                            <button type="button" class="btn btn-link text-light text-decoration-none fs-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <i class="fa-solid fa-right-from-bracket"></i> Visit site
+                            </button>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
+
+        <!-- Log out Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to log out?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
+                <button type="button" class="btn btn-danger" id="yesButton">Yes</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <script>
+            // Add event listener for "Yes" button
+            document.getElementById('yesButton').addEventListener('click', function() {
+                // Redirect to logout.php page 
+                window.location.href = 'logout.php'; // Replace with your target URL
+            });
+        </script>
+        
 </header>
