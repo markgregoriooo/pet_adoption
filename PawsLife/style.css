@@ -1,6 +1,23 @@
 body{
     margin: 0;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
 }
+h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+p {
+    font-size: 1.125rem; /* Slightly larger text for readability */
+    line-height: 1.8;
+    color: #555; /* Soft dark gray for less contrast than black */
+}
+.btn {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
 header{
     display: block;
 }
@@ -165,7 +182,15 @@ section{
 }
 #adopt-form-btn{
     padding: 10px;
-    
+
+}
+.form-bg{
+  background-image: url('photos/form-bg.avif');
+  background-size: cover; /* Make the background image cover the entire form */
+  background-position: center; /* Position the background image in the center */
+  padding: 20px; /* Add some padding inside the form */
+  border-radius: 8px; /* Optional: Rounded corners for the form */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for some depth */
 }
     
 

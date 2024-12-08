@@ -35,9 +35,17 @@
                                 <a href="admin-login.php" class="nav-link">Admin</a>
                             </li>
                         <?php endif; ?>
-                        <li class="nav-item" id="header-nav-bg">
-                            <a href="index.php" class="nav-link " >Home</a>
-                        </li>
+                        <?php if (isset($_SESSION['loggedin'])): ?>
+                            <li class="nav-item" id="header-nav-bg">
+                                <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#userLogout">
+                                    Home
+                                </button>
+                            </li>
+                        <?php else: ?>
+                            <li class="nav-item" id="header-nav-bg">
+                                <a href="index.php" class="nav-link " >Home</a>
+                            </li>
+                        <?php endif; ?>
                         <li class="nav-item" id="header-nav-bg">
                             <a href="adopt-login.php" class="nav-link ">Adopt</a>
                         </li>

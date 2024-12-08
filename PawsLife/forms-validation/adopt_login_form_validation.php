@@ -4,8 +4,8 @@
     $username = $adoptPassword = "";
 
     // default input border color
-    $borderColorUsername = "border-dark";
-    $borderColorPassw = "border-dark";
+    $borderColorUsername = "border-light";
+    $borderColorPassw = "border-light";
 
     // assoc array for errors
     $adoptErrors = array('username'=>'', 'adoptPassword'=>'');

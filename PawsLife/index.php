@@ -8,7 +8,9 @@
 
             <div class="overlay-content position-absolute top-50 start-50 translate-middle text-center text-white p-4 p-md-5 bg-dark bg-opacity-50 rounded w-75 w-md-50 w-lg-25">
                 <h2 class="mb-4 fst-normal display-5">Paws Life</h2>
-                <p class="fst-normal ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci alias amet molestiae itaque non fugit quisquam consequuntur eaque nisi omnis dignissimos, nulla dolorem labore facilis ipsa iure? Tempore, modi laborum?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab quae nam dolorem non architecto natus Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio qui sint, alias quos, neque rerum explicabo modi consectetur veritatis dolore possimus eius quasi magnam odit accusamus eligendi dolores aspernatur non. Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam soluta saepe est deserunt, vitae quae ducimus tenetur quos, beatae magni dolorem? Quod est unde molestiae a suscipit magnam dolorem laboriosam. </p>
+                <p class="fs-normal ">
+                    Focuses on rescuing, rehabilitating, and rehoming animals in need, particularly stray and abused dogs and cats. It promotes animal welfare through adoption programs, spay-neuter campaigns, and public education, encouraging responsible pet ownership. PAWS Life works to give animals a second chance at a loving and safe home. The organization also provides medical care and rehabilitation for injured animals, ensuring they recover fully before being rehomed. Volunteers and supporters play a vital role in fostering animals and spreading awareness about the importance of adoption. By partnering with communities, PAWS Life aims to create a compassionate society where every animal is valued and protected.
+                </p>
                 <button type="button" class="btn btn-outline-success" id="adopt-btn">Apply Now</button>
             </div>
         </div>
@@ -77,7 +79,7 @@
                         <h4 class="text-dark">Our Team</h4>
                     </div>
                     <div class="team-story-desc">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse rerum, quos iure provident eius numquam! Quisquam, adipisci repudiandae, quia soluta, nostrum voluptatem at doloremque maiores corporis aliquid tenetur illo amet! Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque reiciendis accusamus libero fuga sunt, architecto adipisci. Commodi, fugiat hic magnam, quas vero excepturi deleniti, iure alias quae laborum harum sed. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates corporis repellat in dolor, nesciunt vero id sunt aut sed saepe quam praesentium sint, expedita molestiae animi possimus ratione a laboriosam.
+                        We’re a group of animal lovers who believe every pet deserves a chance at happiness. From caring for animals to helping adopters find their perfect match, our team works tirelessly to make every adoption a success. Partnering with shelters and rescue groups, we’re here to create a smooth, heartfelt process for everyone involved. Each of us brings unique skills but shares the same passion: giving pets the love and care they deserve. Together, we’re committed to changing lives—both human and animal—one adoption at a time.
                     </div>
                 </div>
             </div>
@@ -87,12 +89,27 @@
                         <h4 class="text-dark">Our Story</h4>
                     </div>
                     <div class="team-story-desc">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse rerum, quos iure provident eius numquam! Quisquam, adipisci repudiandae, quia soluta, nostrum voluptatem at doloremque maiores corporis aliquid tenetur illo amet! Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque reiciendis accusamus libero fuga sunt, architecto adipisci. Commodi, fugiat hic magnam, quas vero excepturi deleniti, iure alias quae laborum harum sed. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates corporis repellat in dolor, nesciunt vero id sunt aut sed saepe quam praesentium sint, expedita molestiae animi possimus ratione a laboriosam.
+                        Paw’s Life began as a dream among friends who wanted to help homeless pets find loving families. We saw the struggles of overcrowded shelters and knew we had to act. What started as a small idea has grown into a platform connecting countless pets with their forever homes. Every adoption story inspires us to keep going and make a bigger difference. This journey isn’t just about finding homes for pets; it’s about creating a world where every paw is safe and loved.
                     </div>
                 </div>
             </div>
         </div>               
     </section>
+    <script>
+        
+        const button = document.getElementById("adopt-btn");
+
+        // intro button
+        button.addEventListener("click", () =>{
+            window.location.href = "adopt-login.php";
+        });
+        button.addEventListener("mouseover", () =>{
+            button.textContent = "Apply Now";
+        });
+        button.addEventListener("mouseout", () => {
+        button.textContent = "Adopt a Pet"; // Reset text when mouse leaves the button
+        });
+    </script>
     
     <?php include('templates/footer.php'); ?>
 </html>
