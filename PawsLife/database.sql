@@ -26,10 +26,7 @@ CREATE TABLE admin_user(
    password VARCHAR(255) NOT NULL
 );
 
-
-
-
--- for user accounts
+-- create table for user accounts
 CREATE TABLE user_accounts(
     user_acc_id INT UNSIGNED AUTO_INCREMENT,
     user_email VARCHAR(100) NOT NULL,
@@ -45,7 +42,7 @@ CREATE TABLE user_accounts(
 
 
 
--- for adopters
+-- create table for adopters
 CREATE TABLE adopters(
     adopter_id INT UNSIGNED AUTO_INCREMENT,
     adopter_name VARCHAR(50),
@@ -68,7 +65,7 @@ CREATE TABLE adopters(
     PRIMARY KEY(adopter_id)
 );
 
--- for pets
+-- create table for pets
 CREATE TABLE pets( 
     pet_id INT UNSIGNED AUTO_INCREMENT, 
     pet_name VARCHAR(50) NOT NULL UNIQUE, 
@@ -83,7 +80,7 @@ CREATE TABLE pets(
     PRIMARY KEY(pet_id)
 );
 
--- for adopted pets
+-- create table for adopted pets
 CREATE TABLE adopted_pets(
     adopted_pet_id INT UNSIGNED AUTO_INCREMENT, 
     pet_id INT UNSIGNED, 
@@ -98,7 +95,7 @@ CREATE TABLE adopted_pets(
     FOREIGN KEY(adopter_id) REFERENCES adopters(adopter_id) ON UPDATE CASCADE
 );
 
--- for cats
+-- create table for cats
 CREATE TABLE cats(
     cat_id INT UNSIGNED AUTO_INCREMENT, 
     pet_id INT UNSIGNED,
@@ -113,7 +110,7 @@ CREATE TABLE cats(
     FOREIGN KEY (pet_id) REFERENCES pets(pet_id) ON UPDATE CASCADE
 );
 
--- for dogs
+-- create table for dogs
 CREATE TABLE dogs(
     dog_id INT UNSIGNED AUTO_INCREMENT, 
     pet_id INT UNSIGNED, 
@@ -127,7 +124,7 @@ CREATE TABLE dogs(
     FOREIGN KEY(pet_id) REFERENCES pets(pet_id) ON UPDATE CASCADE
 );
 
--- for donators
+-- create table for donators
 CREATE TABLE donators(
     donator_id INT UNSIGNED AUTO_INCREMENT, 
     donator_name VARCHAR(50) NOT NULL, 
@@ -144,7 +141,7 @@ CREATE TABLE donators(
     PRIMARY KEY(donator_id)
 );
 
--- for donations
+-- create table for donations
 CREATE TABLE donations(
     donation_id INT AUTO_INCREMENT,
     donator_id INT UNSIGNED,
@@ -157,21 +154,17 @@ CREATE TABLE donations(
     FOREIGN KEY(donator_id) REFERENCES donators(donator_id) ON UPDATE CASCADE
 );
 
--- Insert default admin username and password (petadoption123)
+
+-- create table user sessions
+CREATE TABLE user_sessions (
+    session_id INT UNSIGNED AUTO_INCREMENT,  
+    user_name VARCHAR(50) NOT NULL,  
+    role ENUM('admin', 'user') NOT NULL,  
+    login_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+    last_activity_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,  
+    PRIMARY KEY(session_id) 
+);
+
+-- insert default admin username and password (petadoption123)
 INSERT INTO admin_user(username, password) 
 VALUES("admin","$2a$12$sUyEWpFNxIRf/QG34.Xhnus.iMXq0/MPSz7bjd2Bhawzj9lbEJD36");
-
-
-
-
--- -- login users
--- CREATE TABLE user_sessions (
---     session_id VARCHAR(100)     , 
---     user_name VARCHAR(50) NOT NULL, -- Foreign key to the user account table
---     role ENUM('admin', 'user') NOT NULL,
---     last_activity_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON DELETE CURRENT_TIMESTAMP,
---     PRIMARY KEY(session_id)
--- );
--- -- when user logs in
--- INSERT INTO user_sessions (user_id)
--- VALUES ((SELECT user_id FROM users WHERE username = 'user_name' LIMIT 1));

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-    <?php include('templates/header.php'); ?>
-    
-    <section class="mt-2">
+    <!-- include header file-->
+    <?php include('templates/header.php'); ?>   
+    <section style=" background-color: #D2B48C; ">
+    <section class="pt-2">
         <div class="container-fluid position-relative">
             <img src="photos/featuredPhoto.jpg" alt="photo" class="img-fluid w-100 mt-2 rounded" id="featured-photo"/>
 
@@ -15,7 +16,7 @@
             </div>
         </div>
     </section>
-
+    <!-- considerations section -->
     <section>
         <div class="container-fluid position-relative" id="cons-container">
             <div class="text-center" id="cons-header-container">
@@ -70,9 +71,10 @@
             </div>
         </div>
     </section>
-
+    
     <section>
-        <div class="container mb-5" id="team-story-container">
+        <!-- our team-->
+        <div class="container pb-5" id="team-story-container">
             <div class="col-12 position-relative ">
                 <div class="bg-dark text-light p-4 mb-3 rounded">
                     <div class="team-story-title">
@@ -83,6 +85,7 @@
                     </div>
                 </div>
             </div>
+            <!-- our story-->
             <div class="col-12 position-relative ">
                 <div class="bg-dark text-light p-4 rounded">
                     <div class="team-story-title">
@@ -95,21 +98,24 @@
             </div>
         </div>               
     </section>
+    </section>
+    
+    <!-- javascript for "Apply Now" button -->
     <script>
         
-        const button = document.getElementById("adopt-btn");
-
+    const button = document.getElementById("adopt-btn");
         // intro button
         button.addEventListener("click", () =>{
-            window.location.href = "adopt-login.php";
+                window.location.href = "adopt-login.php";
         });
         button.addEventListener("mouseover", () =>{
-            button.textContent = "Apply Now";
+                button.textContent = "Apply Now";
         });
         button.addEventListener("mouseout", () => {
         button.textContent = "Adopt a Pet"; // Reset text when mouse leaves the button
         });
     </script>
-    
+
+    <!-- include footer file -->
     <?php include('templates/footer.php'); ?>
 </html>

@@ -48,9 +48,9 @@
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <!-- Button to trigger modal -->
+                            <!-- Button to trigger modal for log out -->
                             <button type="button" class="btn btn-link text-light text-decoration-none fs-5" data-bs-toggle="modal" data-bs-target="#adminLogOut">
-                            <i class="fa-solid fa-right-from-bracket"></i> Visit site
+                            <i class="fa-solid fa-house"></i> Visit site
                             </button>
                         </li>
                     </ul>
@@ -59,7 +59,7 @@
         </nav>
 
         <!-- Log out Modal -->
-        <div class="modal fade" id="adminLogOut" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" data-bs-backdrop="static" id="adminLogOut" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
@@ -70,7 +70,7 @@
                 Are you sure you want to log out?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
                 <button type="button" class="btn btn-danger" id="yesButton">Yes</button>
             </div>
             </div>

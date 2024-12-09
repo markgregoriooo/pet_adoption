@@ -1,16 +1,15 @@
 <?php 
-
   // Include form validation
   include('forms-validation/donate_form_validation.php');
   // Include MySQL insert query
   include('mysql_queries/add_donator_query.php');
   
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
+  <!-- include header file -->
  <?php include('templates/header.php'); ?>
+
     <section id="donate-form">
         <div class="container-fluid pb-2">
             <h2 class="text-center pt-5">Pet Donation Form</h2>
@@ -18,11 +17,11 @@
             <div class="d-flex required-field-text justify-content-center">
                 <p>"<p class="text-danger">*</p>" <i>indicates required fields</i></p>
             </div>
-
+            <!-- form -->
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" enctype="multipart/form-data">
-              <div class="m-5">
 
-                <!-- donator photo data -->
+              <div class="m-5">
+                <!-- donator photo -->
                 <div class=" mb-3">
                       <label for="donator_photo" class="form-label">Upload Photo</label>
                       <input type="file" class="form-control w-100 bg-dark bg-opacity-25 border border-dark" id="donator_photo" name="donator_photo" accept="image/*" >
@@ -45,13 +44,15 @@
                     <input type="number " class="form-control w-100 border-dark bg-dark bg-opacity-25" id="donate-amount" name="donate-amount" placeholder="Enter Amount" min="1" value="<?php echo htmlspecialchars($donateAmount); ?>">
                     <div class="text-danger"><?php echo htmlspecialchars($donateErrors['amountError']); ?></div>
                 </div>
-          
               </div>
+              <!-- donate button -->
               <div class="text-center">
                 <button class="btn btn-danger w-25 mb-5" id="donate-form-btn" name="donate-btn">Donate</button>
               </div>
             </form>
           </div>           
     </section>
+
+    <!-- include footer file -->
  <?php include('templates/footer.php'); ?>
 </html>

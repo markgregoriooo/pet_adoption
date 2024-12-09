@@ -29,23 +29,27 @@
 
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ms-auto">
-                        <!-- If user is not logged in, show Admin link -->
+                        <!-- if user is not logged in, show admin button -->
                         <?php if (!isset($_SESSION['loggedin'])): ?>
                             <li class="nav-item" id="header-nav-bg">
                                 <a href="admin-login.php" class="nav-link">Admin</a>
                             </li>
                         <?php endif; ?>
+                        <!-- if user is logged in, show home button -->
                         <?php if (isset($_SESSION['loggedin'])): ?>
                             <li class="nav-item" id="header-nav-bg">
+                                <!-- this button trigger the modal to log out -->
                                 <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#userLogout">
                                     Home
                                 </button>
                             </li>
                         <?php else: ?>
+                            <!-- natural button -->
                             <li class="nav-item" id="header-nav-bg">
                                 <a href="index.php" class="nav-link " >Home</a>
                             </li>
                         <?php endif; ?>
+                        <!-- if user is not logged in, show adopt button -->
                         <?php if (!isset($_SESSION['loggedin'])): ?>
                         <li class="nav-item" id="header-nav-bg">
                             <a href="adopt-login.php" class="nav-link ">Adopt</a>
@@ -54,7 +58,7 @@
                         <li class="nav-item" id="header-nav-bg">
                             <a href="donate.php" class="nav-link ">Donate</a>
                         </li>
-                        <!-- If user is logged in, show welcome message and log out button -->
+                        <!-- ff user is logged in, show log out button -->
                         <?php if (isset($_SESSION['loggedin'])): ?>
                             <li class="nav-item" id="header-nav-bg">
                                 <!-- Button to trigger modal -->
@@ -71,18 +75,18 @@
             </div>
         </nav>
         <!-- Log out Modal -->
-        <div class="modal fade" id="userLogout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" data-bs-backdrop="static" id="userLogout" tabindex="-1" aria-labelledby="logoutmodal" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content ">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                <h5 class="modal-title" id="logoutmodal">Confirmation</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 Are you sure you want to log out?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
                 <button type="button" class="btn btn-danger" id="yesButton">Yes</button>
             </div>
             </div>

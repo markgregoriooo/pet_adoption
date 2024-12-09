@@ -11,61 +11,88 @@
     // connect to database
     include('config/db_connect.php');
 
-    //prepared statement for USER ACCOUNTS table
-    $stmt1 = $conn->prepare("SELECT * FROM user_accounts WHERE is_deleted = FALSE ORDER BY created_at");
-    //execute
-    $stmt1->execute();
-    //get the result
-    $result1 = $stmt1->get_result();
+    //prepared statemnt for USERA SESSIONS table
+    $stmt = $conn->prepare("SELECT * FROM user_sessions ");
+    //execute 
+    $stmt->execute();
+    //get result
+    $result = $stmt->get_result();
     // fetch the resulting rows as an array
-    $userAccounts = $result1->fetch_all(MYSQLI_ASSOC);
+    $user_sessions = $result->fetch_all(MYSQLI_ASSOC);
+    //close statement
+    $stmt->close();
+
+    //prepared statement for USER ACCOUNTS table
+    $stmt = $conn->prepare("SELECT * FROM user_accounts WHERE is_deleted = FALSE ORDER BY created_at");
+    //execute
+    $stmt->execute();
+    //get the result
+    $result = $stmt->get_result();
+    // fetch the resulting rows as an array
+    $userAccounts = $result->fetch_all(MYSQLI_ASSOC);
+    //close statement
+    $stmt->close();
 
 
     //prepared statemnt for ADOPTER table
-    $stmt2 = $conn->prepare("SELECT * FROM adopters WHERE is_deleted = FALSE ORDER BY created_at");
+    $stmt = $conn->prepare("SELECT * FROM adopters WHERE is_deleted = FALSE ORDER BY created_at");
     //execute 
-    $stmt2->execute();
+    $stmt->execute();
     //get result
-    $result2 = $stmt2->get_result();
+    $result = $stmt->get_result();
     // fetch the resulting rows as an array
-    $adopters = $result2->fetch_all(MYSQLI_ASSOC);
+    $adopters = $result->fetch_all(MYSQLI_ASSOC);
+    //close statement
+    $stmt->close();
 
     //prepared statemnt for ADOPTED PETS table
-    $stmt3 = $conn->prepare("SELECT * FROM adopted_pets WHERE is_deleted = FALSE ORDER BY created_at");
+    $stmt = $conn->prepare("SELECT * FROM adopted_pets WHERE is_deleted = FALSE ORDER BY created_at");
     //execute 
-    $stmt3->execute();
+    $stmt->execute();
     //get result
-    $result3 = $stmt3->get_result();
+    $result = $stmt->get_result();
     // fetch the resulting rows as an array
-    $adopted_pets = $result3->fetch_all(MYSQLI_ASSOC);
+    $adopted_pets = $result->fetch_all(MYSQLI_ASSOC);
+    //close statement
+    $stmt->close();
 
     //prepared statemnt for CATS table
-    $stmt4 = $conn->prepare("SELECT * FROM cats INNER JOIN pets ON cats.pet_id = pets.pet_id WHERE pets.is_deleted = FALSE ORDER BY pets.created_at");
+    $stmt = $conn->prepare("SELECT * FROM cats INNER JOIN pets ON cats.pet_id = pets.pet_id WHERE pets.is_deleted = FALSE ORDER BY pets.created_at");
     //execute 
-    $stmt4->execute();
+    $stmt->execute();
     //get result
-    $result4 = $stmt4->get_result();
+    $result = $stmt->get_result();
     // fetch the resulting rows as an array
-    $cats = $result4->fetch_all(MYSQLI_ASSOC);
+    $cats = $result->fetch_all(MYSQLI_ASSOC);
+    //close statement
+    $stmt->close();
 
     //prepared statemnt for DOGS table
-    $stmt5 = $conn->prepare("SELECT * FROM dogs INNER JOIN pets ON dogs.pet_id = pets.pet_id WHERE pets.is_deleted = FALSE ORDER BY pets.created_at");
+    $stmt = $conn->prepare("SELECT * FROM dogs INNER JOIN pets ON dogs.pet_id = pets.pet_id WHERE pets.is_deleted = FALSE ORDER BY pets.created_at");
     //execute 
-    $stmt5->execute();
+    $stmt->execute();
     //get result
-    $result5 = $stmt5->get_result();
+    $result = $stmt->get_result();
     // fetch the resulting rows as an array
-    $dogs = $result5->fetch_all(MYSQLI_ASSOC);
+    $dogs = $result->fetch_all(MYSQLI_ASSOC);
+    //close statement
+    $stmt->close();
 
     
     //prepared statemnt for DONATORS table
-    $stmt6 = $conn->prepare("SELECT * FROM donators WHERE is_deleted = FALSE ORDER BY created_at");
+    $stmt = $conn->prepare("SELECT * FROM donators WHERE is_deleted = FALSE ORDER BY created_at");
     //execute 
-    $stmt6->execute();
+    $stmt->execute();
     //get result
-    $result6 = $stmt6->get_result();
+    $result = $stmt->get_result();
     // fetch the resulting rows as an array
-    $donators = $result6->fetch_all(MYSQLI_ASSOC);
+    $donators = $result->fetch_all(MYSQLI_ASSOC);
+    //close statement
+    $stmt->close();
+
+    
+
+
 
 
 ?>
@@ -73,8 +100,38 @@
 <html lang="en">
  <?php include('templates/adminHeader.php') ?>
     <section class=" pt-5 pb-3 bg-secondary">
-    
-        <section id="adopted-pets-database">
+        <!-- user sessions table -->
+        <section>
+        <div class="bg-dark container mb-5 p-3 ">
+            <h2 style="color: bisque;">User Sessions</h2>        
+            <div style="max-height: 400px; overflow-y: auto; overflow-x: auto;">
+            <table class="table table-striped table-hover table-success table-bordered">
+            <thead class="table-warning">
+                <tr>
+                    <th>Session Id</th>
+                    <th>Username</th>
+                    <th>Role</th>
+                    <th>Login_time</th>
+                    <th>Last_activity_time</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($user_sessions as $user_session):?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($user_session['session_id']) ?></td>
+                            <td><?php echo htmlspecialchars($user_session['user_name'])  ?></td>
+                            <td><?php echo htmlspecialchars($user_session['role'])  ?></td>
+                            <td><?php echo htmlspecialchars($user_session['login_time'])  ?></td>
+                            <td><?php echo htmlspecialchars($user_session['last_activity_time'])  ?></td>
+                        </tr>
+                        <?php endforeach;?>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        </section>
+        <!-- user accounts table -->
+        <section>
         <div class="bg-dark container mb-5 p-3 ">
             <h2 style="color: bisque;">User Accounts</h2>        
             <div style="max-height: 400px; overflow-y: auto; overflow-x: auto;">
@@ -109,8 +166,8 @@
             </div>
         </div>
         </section>
-
-        <section id="adopters-database">
+        <!-- adopters table -->
+        <section>
         <div class="bg-dark container mt-3 mb-5 p-3 ">
             <h2 style="color: bisque;">Adopters</h2>        
             <div style="max-height: 400px; overflow-y: auto; overflow-x: auto;">
@@ -157,8 +214,8 @@
             </div>
         </div>
         </section>
-
-        <section id="adopted-pets-database">
+        <!-- adopted pets table -->
+        <section>
         <div class="bg-dark container mt-3 mb-5 p-3 ">
             <h2 style="color: bisque;">Adopted Pets</h2>        
             <div style="max-height: 400px; overflow-y: auto; overflow-x: auto;">
@@ -194,9 +251,7 @@
             </div>
         </div>
         </section>
-
-
-
+        <!-- cats table -->
         <section id="cats-database">
         <div class="bg-dark container mt-3 mb-5 p-3 ">
             <h2 style="color: bisque;">Cats</h2>        
@@ -228,6 +283,8 @@
             </div>
         </div>
         </section>
+
+        <!-- dogs table -->
         <section id="dogs-database">
         <div class="bg-dark container mt-3 mb-5 p-3 ">
             <h2 style="color: bisque;">Dogs</h2>        
@@ -257,7 +314,7 @@
             </div>
         </div>
         </section>
-
+        <!-- donators table -->
         <section id="donators-database">
         <div class="bg-dark container mt-3 mb-5 p-3 ">
             <h2 style="color: bisque;">Donators</h2>        

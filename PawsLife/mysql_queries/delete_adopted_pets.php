@@ -7,11 +7,14 @@
     include('../config/db_connect.php');
 
     if (isset($_GET['id'])) {
-        $id_to_delete = htmlspecialchars(($_GET['id']));
 
+        $id_to_delete = htmlspecialchars(($_GET['id']));     //get id fromn the UR
+
+        //prepare sql stmt
         $stmt = $conn->prepare("UPDATE adopted_pets SET is_deleted = TRUE WHERE adopted_pet_id = ? ");
 
         if($stmt){
+            //bind param
             $stmt->bind_param("i", $id_to_delete);
 
             // Execute the statement
