@@ -58,11 +58,11 @@ $donation = $result->fetch_assoc();
 // Close the statement 
 $stmt->close();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <?php include('../templates/classicHeader.php'); ?>
-<section class="bg-success">
+
+<section class="bg-success p-3">
   <div class="container-fluid text-center text-dark p-1 rounded" style="height:300px;">
     <h3 class="m-5">TOTAL DONATIONS</h3>
     <?php
@@ -77,8 +77,9 @@ $stmt->close();
     ?>
   </div>
 </section>
+
 <!-- carousel -->
-<section>
+<section class="p-5">
   <div id="carouselExampleCaptions" class="carousel slide border border-dark" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -87,21 +88,21 @@ $stmt->close();
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="../photos/donationCarousel3.png" class="d-block w-100" alt="..." style="object-fit: cover; height: 300px;">
+        <img src="../photos/donationCarousel3.png" class="d-block w-100" alt="..." style="object-fit: cover; height: 200px;">
         <div class="carousel-caption d-none d-md-block">
           <h5>We Appreciate Your Hard Work</h5>
           <p>Your dedication and commitment to overseeing the donation process truly make a difference. You ensure that everything runs smoothly and efficiently. We are grateful for all the time and effort you put in every day!</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="../photos/donationCarousel2.png" class="d-block w-100" alt="..." style="object-fit: cover; height: 300px;">
+        <img src="../photos/donationCarousel2.png" class="d-block w-100" alt="..." style="object-fit: cover; height: 200px;">
         <div class="carousel-caption d-none d-md-block">
           <h5>Thank You for Your Effort</h5>
           <p>Your daily effort and dedication are key to everything we do. You ensure that the donation process stays organized and efficient. We truly appreciate your hard work and support!</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="../photos/donationCarousel1.webp" class="d-block w-100" alt="..." style="object-fit: cover; height: 300px;">
+        <img src="../photos/donationCarousel1.webp" class="d-block w-100" alt="..." style="object-fit: cover; height: 200px;">
         <div class="carousel-caption d-none d-md-block">
           <h5>You Make a Big Difference</h5>
           <p>Your leadership makes a huge impact on the donation process. Because of you, we can continue to make a positive difference. Thank you for all the hard work you put in every day!</p>
