@@ -81,7 +81,7 @@
             // Add event listener for "Yes" button
             document.getElementById('yesButton').addEventListener('click', function() {
                 // Redirect to logout.php page 
-                window.location.href = 'logout.php'; // Replace with your target URL
+                window.location.href = 'logout.php'; 
             });
         </script>
         

@@ -17,21 +17,21 @@
           <div class="m-5">
             <div class="mb-3">
               <label for="adopt-username" class="form-label text-light">Username:</label>
-              <input type="text" class="form-control bg-light bg-opacity-25 <?php echo $borderColorUsername; ?>" id="adopt-username" name="adopt-username" placeholder="Enter Username" value="<?php echo htmlspecialchars($username); ?>">
+              <input type="text" class="form-control bg-light bg-opacity-50 <?php echo $borderColorUsername; ?>" id="adopt-username" name="adopt-username" placeholder="Enter Username" value="<?php echo htmlspecialchars($username); ?>">
               <div class="text-danger"><?php echo htmlspecialchars($adoptErrors['username']); ?></div>
             </div>
 
             <div class="mb-3">
               <label for="adopt-password" class="form-label text-light">Password:</label>
-              <input type="password" class="form-control w-100 bg-light bg-opacity-25 <?php echo $borderColorPassw; ?>" id="adopt-password" name="adopt-password" placeholder="Enter Password" value="<?php echo htmlspecialchars($adoptPassword); ?>">
+              <input type="password" class="form-control w-100 bg-light bg-opacity-50 <?php echo $borderColorPassw; ?>" id="adopt-password" name="adopt-password" placeholder="Enter Password" value="<?php echo htmlspecialchars($adoptPassword); ?>">
               <div class="text-danger"><?php echo htmlspecialchars($adoptErrors['adoptPassword']); ?></div>
             </div>
           </div>
           
           <!-- buttons -->
           <div class="text-center d-flex justify-content-center ">
-            <button type="submit" class="btn btn-primary w-25 mb-5 me-5" id="adopt-form-btn" name="login">Login</button>
-            <button type="submit" class="btn btn-primary w-25 mb-5 ms-5" id="adopt-form-btn" name="signUp">Sign Up</button>
+            <button type="submit" class="btn btn-dark w-25 mb-5 me-5" id="adopt-form-btn" name="login">Login</button>
+            <button type="submit" class="btn btn-dark w-25 mb-5 ms-5" id="adopt-form-btn" name="signUp">Sign Up</button>
           </div>
         
         </form>

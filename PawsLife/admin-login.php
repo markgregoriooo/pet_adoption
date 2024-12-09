@@ -1,82 +1,78 @@
 <?php 
   session_start(); // start session
-
-  //admin username
-  define("USERNAME", "admin");
-
-  // Hash the admin password 
-  define("PASSWORD_HASHED", password_hash("petadoption123", PASSWORD_BCRYPT));
+  //connect to db
+  include('config/db_connect.php');
 
   // assoc array for errors
   $adminAccErrors = array('adminUsername'=>'', 'adminPassword'=>'');
 
   $usernameInput = $passwordInput = "";
-  $borderColorUsername = $borderColorPass ="border-dark";
+  $borderColorUsername = $borderColorPass ="border-light";
 
-  //check email
-  if(isset($_POST['login'])){
+// Check if the form is submitted
+if(isset($_POST['login'])){
 
-    if(empty($_POST['admin-username'])){
-
+  // Check if username is empty
+  if(empty($_POST['admin-username'])){
       $adminAccErrors['adminUsername'] = "*Username is required.";
       $borderColorUsername = "border-danger border-2";
-
-    }else{
-
+  } else {
       $usernameInput = htmlspecialchars($_POST['admin-username']);
-      $usernameInput = strtolower($usernameInput);
 
-      if($usernameInput !== USERNAME){
+      // Prepare a statement to check the username in the database
+      $stmt = $conn->prepare("SELECT username, password FROM admin_user WHERE username = ?");
+      $stmt->bind_param("s", $usernameInput); // 's' stands for string
+      $stmt->execute();
+      $stmt->store_result();
 
-        $adminAccErrors['adminUsername'] = "* Wrong username.";
-        $borderColorUsername = "border-danger border-2";
+      // Check if the username exists
+      if ($stmt->num_rows === 0) {
+          $adminAccErrors['adminUsername'] = "* Wrong username.";
+          $borderColorUsername = "border-danger border-2";
+      } else {
+          // If the username exists, fetch the hashed password
+          $stmt->bind_result($adminUsername, $adminPassword);
+          $stmt->fetch();
 
-      }else{
+          // Check password
+          if (empty($_POST['admin-password'])) {
+              $adminAccErrors['adminPassword'] = "* A password is required.";
+              $borderColorPass = "border-danger border-2";
+          } else {
+              $passwordInput = htmlspecialchars($_POST['admin-password']);
 
-        $borderColorUsername = "border-success border-2";
-        $_SESSION['username'] = htmlspecialchars($usernameInput); // store username in session
-        
+              // Verify the password against the hashed password stored in the database
+              if (!password_verify($passwordInput, $adminPassword)) {
+                  $adminAccErrors['adminPassword'] = "* Wrong password.";
+                  $borderColorPass = "border-danger border-2";
+              } else {
+                  $borderColorPass = "border-success border-2";
+                  $_SESSION['username'] = $usernameInput; // Store the username in the session
+                  $_SESSION['loggedin'] = true; // Set session for logged-in user
+
+                  // Redirect to admin page
+                  echo "<script>
+                          alert('Welcome, Admin!');
+                          window.location.href = 'admin.php'; 
+                        </script>";
+                  exit();
+              }
+          }
       }
-    }
 
-    //check password
-    if(empty($_POST['admin-password'])){
-
-      $adminAccErrors['adminPassword'] = "*A Password is required";
-      $borderColorPass = "border-danger border-2";
-      
-    }else{
-
-      $passwordInput = htmlspecialchars($_POST['admin-password']);
-
-      if(!password_verify($passwordInput, PASSWORD_HASHED)){
-
-        $adminAccErrors['adminPassword'] = "* Wrong Password";
-        $borderColorPass = "border-danger border-2";
-
-      }else{
-
-        $borderColorPass = "border-success border-2";
-        $_SESSION['username'] = $usernameInput; // Store username in session
-        $_SESSION['loggedin'] = true; // indication the user logged in
-        //redirect to the admin page
-        echo 
-        "<script>
-            alert('Welcome, Admin!');
-            window.location.href = 'admin.php'; 
-        </script>";
-        exit();
-      }
-    }
-
-    if(array_filter($adminAccErrors)){
-
-        //there is/are error/s
-        $usernameInput = htmlspecialchars($_POST['admin-username']);
-        $passwordInput = htmlspecialchars($_POST['admin-password']);
-
-    }
+      $stmt->close(); // Close the statement
   }
+
+  // If there are any errors, save the user input for repopulating the form
+  if (array_filter($adminAccErrors)) {
+      $usernameInput = htmlspecialchars($_POST['admin-username']);
+      $passwordInput = htmlspecialchars($_POST['admin-password']);
+  }
+}
+
+  // Close the MySQL connection
+  $conn->close();
+
 ?>
 
 <!DOCTYPE html>
@@ -84,25 +80,25 @@
 <?php include('templates/header.php'); ?>
   <section id="adopt-form" class="pb-5">
     <div class="container-fluid p-5">
-      <div class="border p-4 w-50 bg-light rounded-3 shadow-sm w-sm-90 w-md-75 w-lg-50 w-xl-40 mx-auto">
-        <i class="fa-solid fa-user-tie text-dark text-center d-flex justify-content-center fs-1 mt-4"></i>
-        <h4 class="text-center text-dark mt-2">ADMIN LOGIN</h4>
+      <div class="form-bg border p-4 w-50 bg-light rounded-3 shadow-sm w-sm-90 w-md-75 w-lg-50 w-xl-40 mx-auto">
+        <i class="fa-solid fa-user-tie text-light text-center d-flex justify-content-center fs-1 mt-4"></i>
+        <h4 class="text-center text-light mt-2">ADMIN LOGIN</h4>
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
           <div class="m-4">
             <div class="mb-3">
-              <label for="admin-username" class="form-label text-dark">Username:</label>
-              <input type="text" class="form-control w-100 bg-dark bg-opacity-25 <?php echo $borderColorUsername?>" id="admin-username" name="admin-username" placeholder="Enter Username" value="<?php echo htmlspecialchars($usernameInput); ?>">
+              <label for="admin-username" class="form-label text-light">Username:</label>
+              <input type="text" class="form-control w-100 bg-light bg-opacity-50 <?php echo $borderColorUsername?>" id="admin-username" name="admin-username" placeholder="Enter Username" value="<?php echo htmlspecialchars($usernameInput); ?>">
               <div class="text-danger"><?php echo htmlspecialchars($adminAccErrors['adminUsername']); ?></div>
             </div>
 
             <div class="mb-3">
-              <label for="admin-password" class="form-label text-dark">Password:</label>
-              <input type="password" class="form-control w-100 bg-dark bg-opacity-25 <?php echo $borderColorPass?>" id="admin-password" name="admin-password" placeholder="Enter Password" value="<?php echo htmlspecialchars($passwordInput); ?>">
+              <label for="admin-password" class="form-label text-light">Password:</label>
+              <input type="password" class="form-control w-100 bg-light bg-opacity-50 <?php echo $borderColorPass?>" id="admin-password" name="admin-password" placeholder="Enter Password" value="<?php echo htmlspecialchars($passwordInput); ?>">
               <div class="text-danger"><?php echo htmlspecialchars($adminAccErrors['adminPassword']); ?></div>
             </div>
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-primary w-25 mb-5 mt-3" id="admin-login-btn" name="login">Log in</button>
+            <button type="submit" class="btn btn-dark w-25 mb-5 mt-3" id="admin-login-btn" name="login">Log in</button>
           </div>
         </form>
       </div>

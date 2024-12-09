@@ -10,6 +10,10 @@ body{
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
 }
+a{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
 
 header{
     display: block;
@@ -178,18 +182,19 @@ section{
 
 }
 .form-bg{
-  background-image: url('photos/form-bg.avif');
-  background-size: cover; /* Make the background image cover the entire form */
-  background-position: center; /* Position the background image in the center */
-  padding: 20px; /* Add some padding inside the form */
-  border-radius: 8px; /* Optional: Rounded corners for the form */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for some depth */
+    background-image: url('photos/form_bf.jpg');
+    background-size: cover; 
+    background-position: center; 
+    padding: 20px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
+
     
 
 /*DONATE PAGE*/
 #donate-form{
-    background: url("photos/donationBg.jpg") no-repeat center fixed;
+    background: url("") no-repeat center fixed;
     background-size: cover;
 }
 #donate-form-btn{

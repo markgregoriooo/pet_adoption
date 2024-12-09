@@ -6,10 +6,10 @@
        $createAccErrors = array("crtemailError" => "", "crtpassError" => "", "cnfrmPassError" => "", "username" => "");
 
         //default border colors each input
-       $borderClrEmail = "border-dark";
-       $borderClrPassw = "border-dark";
-       $borderClrConPassw = "border-dark";
-       $borderColorUsername = "border-dark";
+       $borderClrEmail = "border-light";
+       $borderClrPassw = "border-light";
+       $borderClrConPassw = "border-light";
+       $borderColorUsername = "border-light";
        
       if(isset($_POST["createAcc"])){
 

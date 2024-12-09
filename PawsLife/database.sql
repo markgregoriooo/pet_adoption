@@ -19,6 +19,16 @@ USE pawslife_db;
 
 -- CREATE TABLES
 
+--admin
+CREATE TABLE admin_user( 
+   admin_id INT AUTO_INCREMENT PRIMARY KEY,
+   username VARCHAR(255) NOT NULL,
+   password VARCHAR(255) NOT NULL
+);
+
+
+
+
 -- for user accounts
 CREATE TABLE user_accounts(
     user_acc_id INT UNSIGNED AUTO_INCREMENT,
@@ -147,14 +157,21 @@ CREATE TABLE donations(
     FOREIGN KEY(donator_id) REFERENCES donators(donator_id) ON UPDATE CASCADE
 );
 
--- login users
-CREATE TABLE user_sessions (
-    session_id VARCHAR(100)     , 
-    user_name VARCHAR(50) NOT NULL, -- Foreign key to the user account table
-    role ENUM('admin', 'user') NOT NULL,
-    last_activity_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON DELETE CURRENT_TIMESTAMP,
-    PRIMARY KEY(session_id)
-);
--- when user logs in
-INSERT INTO user_sessions (user_id)
-VALUES ((SELECT user_id FROM users WHERE username = 'user_name' LIMIT 1));
+-- Insert default admin username and password (petadoption123)
+INSERT INTO admin_user(username, password) 
+VALUES("admin","$2a$12$sUyEWpFNxIRf/QG34.Xhnus.iMXq0/MPSz7bjd2Bhawzj9lbEJD36");
+
+
+
+
+-- -- login users
+-- CREATE TABLE user_sessions (
+--     session_id VARCHAR(100)     , 
+--     user_name VARCHAR(50) NOT NULL, -- Foreign key to the user account table
+--     role ENUM('admin', 'user') NOT NULL,
+--     last_activity_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON DELETE CURRENT_TIMESTAMP,
+--     PRIMARY KEY(session_id)
+-- );
+-- -- when user logs in
+-- INSERT INTO user_sessions (user_id)
+-- VALUES ((SELECT user_id FROM users WHERE username = 'user_name' LIMIT 1));
