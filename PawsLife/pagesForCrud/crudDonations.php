@@ -62,8 +62,8 @@ $stmt->close();
 <html lang="en">
 <?php include('../templates/classicHeader.php'); ?>
 
-<section class="bg-success p-3">
-  <div class="container-fluid text-center text-dark p-1 rounded" style="height:300px;">
+<section class="p-5">
+  <div class="container-fluid bg-success text-center text-dark p-1 rounded" style="height:300px;">
     <h3 class="m-5">TOTAL DONATIONS</h3>
     <?php
     // check if a donation record was found
@@ -79,7 +79,7 @@ $stmt->close();
 </section>
 
 <!-- carousel -->
-<section class="p-5">
+<section class="p-3">
   <div id="carouselExampleCaptions" class="carousel slide border border-dark" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>

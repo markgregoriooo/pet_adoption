@@ -11,7 +11,7 @@
                     <!-- Donator details displayed as text in <p> tags -->
                     <p><strong>User ID:</strong> <span id="modal_user_acc_id"></span></p>
                     <p><strong>Username:</strong> <span id="modal_username"></span></p>
-                    <p><strong>Hash Password:</strong> <span id="modal_hash_password"></span></p>
+                    <p><strong>Hashed Password:</strong> <span id="modal_hash_password"></span></p>
                     <p><strong>Email:</strong> <span id="modal_user_email"></span></p>
                     <p><strong>Created at:</strong> <span id="modal_user_created"></span></p>
                 </div>

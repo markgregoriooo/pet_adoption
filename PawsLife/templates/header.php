@@ -56,7 +56,7 @@
                         </li>
                         <?php endif; ?>
                         <li class="nav-item" id="header-nav-bg">
-                            <a href="donate.php" class="nav-link ">Donate</a>
+                            <a href="donate.php" class="nav-link fw-bold">Donate</a>
                         </li>
                         <!-- ff user is logged in, show log out button -->
                         <?php if (isset($_SESSION['loggedin'])): ?>

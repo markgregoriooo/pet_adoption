@@ -141,7 +141,7 @@
                     <th>Id</th>
                     <th>Email</th>
                     <th>Username</th>
-                    <th>Password</th>
+                    <th>Hashed_password</th>
                     <th>Created_at</th>
                     <th>Updated_at</th>
                     <th>Is_deleted</th>

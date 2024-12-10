@@ -49,7 +49,7 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <!-- Button to trigger modal for log out -->
-                            <button type="button" class="btn btn-link text-light text-decoration-none fs-5" data-bs-toggle="modal" data-bs-target="#adminLogOut">
+                            <button type="button" class="btn btn-link text-light text-decoration-none fs-6" data-bs-toggle="modal" data-bs-target="#adminLogOut">
                             <i class="fa-solid fa-house"></i> Visit site
                             </button>
                         </li>
