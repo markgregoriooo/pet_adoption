@@ -3,9 +3,8 @@
     <div class="modal fade" data-bs-backdrop="static" id="user_acc_details" tabindex="-1" aria-labelledby="user_acc_detailsLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header" style=" background-color: #e8d6c1; ">
                     <h5 class="modal-title" id="user_acc_detailsLabel">User Account Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <!-- Donator details displayed as text in <p> tags -->
@@ -16,7 +15,7 @@
                     <p><strong>Created at:</strong> <span id="modal_user_created"></span></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn " style="background-color: bisque;" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-dark"  data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>

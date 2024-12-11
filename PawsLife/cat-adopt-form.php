@@ -57,9 +57,9 @@
 <body>
   <!-- include header file -->
   <?php include('templates/header.php'); ?>
-    <section>
+    <section style=" background-color: #e8d6c1; ">
         <?php if(!isset($_POST['cat-adoption-form-btn'])): ?>
-        <div class="container mb-2 mt-3 p-2 border border-dark">
+        <div class="container pb-2 pt-3 p-2 border border-dark">
             <div class="d-flex">
               <img src="data:<?php echo htmlspecialchars($cat['photo_type']); ?>;base64,<?php echo base64_encode($cat['photo_data']); ?>" class="w-25 h-50 ms-5 mt-3 border border-dark" alt="cat photo">
               <div class="container border border-dark ms-5 overflow-scroll" style="max-height: 500px;">
@@ -74,7 +74,7 @@
 
       </section>
     <!-- CAT ADOPTION FORM FOR ADOPTER-->
-    <section id="adoption-form">
+    <section id="adoption-form" style=" background-color: #e8d6c1; ">
         <div class="container-fluid pb-2">
             <h2 class="text-center pt-5">Adoption Form</h2>
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" enctype="multipart/form-data">

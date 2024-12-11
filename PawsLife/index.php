@@ -2,7 +2,7 @@
 <html lang="en">
     <!-- include header file-->
     <?php include('templates/header.php'); ?>   
-    <section style=" background-color: #D2B48C; ">
+    <section style=" background-color: #e8d6c1; ">
     <section class="pt-2">
         <div class="container-fluid position-relative">
             <img src="photos/featuredPhoto.jpg" alt="photo" class="img-fluid w-100 mt-2 rounded" id="featured-photo"/>

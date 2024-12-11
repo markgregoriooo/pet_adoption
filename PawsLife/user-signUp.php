@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include('templates/header.php'); ?>
-  <section id="adopt-form" style=" background-color: #D2B48C;" >
+  <section id="adopt-form" style=" background-color: #e8d6c1;" >
     <div class="container-fluid p-5">
       <div class="form-bg border border-dark p-4 w-50 bg-light rounded-3 shadow-sm w-sm-90 w-md-75 w-lg-50 w-xl-40 mx-auto">
         <h2 class="text-center text-light pt-5">Create your account</h2>

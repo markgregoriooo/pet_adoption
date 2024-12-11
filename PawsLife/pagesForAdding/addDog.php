@@ -7,12 +7,12 @@ include('../mysql_queries/add_dog_queries.php');
 <!DOCTYPE html>
 <html lang="en">
 <?php include('../templates/classicHeader.php') ?>
-<section id="edit-dog-form">
+<section style="background-color: #e8d6c1;">
     <div class="container-fluid pb-2">
         <!-- add dog form -->
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" enctype="multipart/form-data">
 
-            <div class=" adopter-info-text d-flex justify-content-center mb-2 mt-3">
+            <div class=" adopter-info-text d-flex justify-content-center mb-2 pt-3">
                 <h4>ADD DOG'S INFO</h4>
             </div>
             <div class="d-flex required-field-text justify-content-center">

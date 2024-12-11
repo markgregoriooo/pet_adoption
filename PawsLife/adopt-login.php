@@ -10,7 +10,7 @@
 <html lang="en">
   <!-- include header file -->
   <?php include('templates/header.php'); ?>
-    <section style=" background-color: #D2B48C;" class="pb-2">
+    <section style=" background-color: #e8d6c1;" class="pb-2">
       <div class="container-fluid p-5 d-flex justify-content-center">
         <div class="form-bg border border-dark  p-4 w-50 bg-light rounded-3 shadow-sm w-sm-90 w-md-75 w-lg-50 w-xl-40 mx-auto">
           <h2 class="text-center text-light pt-5">Login</h2>

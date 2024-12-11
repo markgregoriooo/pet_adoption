@@ -184,15 +184,16 @@ section{
     background-position: center; 
     padding: 20px; 
     border-radius: 8px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
 }
 
     
 
 /*DONATE PAGE*/
 #donate-form{
-    background: url("") no-repeat center fixed;
+    background: url("photos/donate-bg.jpg") no-repeat center fixed;
     background-size: cover;
+    background-color: rgba(0, 0, 0, 0.3); /* Dark overlay with 30% opacity */
 }
 #donate-form-btn{
     padding: 10px;

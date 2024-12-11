@@ -43,7 +43,7 @@ if (isset($_POST['login'])) {
         $adminAccErrors['adminPassword'] = "* A password is required.";
         $borderColorPass = "border-danger border-2";
       } else {
-        $passwordInput = htmlspecialchars($_POST['admin-password']); //store the inputted username in var
+        $passwordInput = htmlspecialchars($_POST['admin-password']); //store the inputted password in var
 
         // verify the password against the hashed password stored in the database
         if (!password_verify($passwordInput, $adminPassword)) {
@@ -109,7 +109,7 @@ $conn->close();
   <!-- include header file -->
 <?php include('templates/header.php'); ?>
 
-<section style=" background-color: #D2B48C;" class="pb-5">
+<section style=" background-color: #e8d6c1;" class="pb-5">
   <div class="container-fluid p-5">
     <div class="form-bg border border-dark p-4 w-50 bg-light rounded-3 shadow-sm w-sm-90 w-md-75 w-lg-50 w-xl-40 mx-auto">
       <i class="fa-solid fa-user-tie text-light text-center d-flex justify-content-center fs-1 mt-4"></i>

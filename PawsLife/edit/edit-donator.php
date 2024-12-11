@@ -35,33 +35,33 @@ if (isset($_GET['id'])) {
 <!DOCTYPE html>
 <html lang="en">
 <?php include('../templates/classicHeader.php'); ?>
-<section>
+<section style=" background-color: #e8d6c1; ">
     <?php if (!isset($_POST['edit-donator-form-btn'])): ?>
-        <div class="container mb-2 mt-3 p-2 border border-dark">
+        <div class="container pb-2 pt-3 p-2 border border-dark">
             <div class="d-flex">
                 <!-- show donator's current details -->
                 <img src="data:<?php echo htmlspecialchars($donator['photo_type']); ?>;base64,<?php echo base64_encode($donator['photo_data']); ?>" class="w-25 h-50 ms-5 mt-3 border border-dark" alt="donator photo">
                 <div class="container border border-dark ms-5 overflow-scroll" style="max-height: 500px;">
-                    <h5 class="display-6">Name: <strong><?php echo htmlspecialchars($donator['donator_name']) ?></strong></h5>
-                    <h6 class="">Email: <strong><?php echo htmlspecialchars($donator['donator_email']) ?></strong></h6>
-                    <h6 class="">Amount: <strong><?php echo htmlspecialchars($donator['amount']) ?></strong></h6>
-                    <h6 class="">Crated at: <strong><?php echo htmlspecialchars($donator['created_at']) ?></strong></h6>
-                    <h6 class="">Updated at: <strong><?php echo htmlspecialchars($donator['updated_at']) ?></strong></h6>
-                    <h6 class="">Deleted: <strong><?php echo htmlspecialchars($donator['is_deleted']) ?></strong></h6>
-                    <h6 class="">Photo name: <strong><?php echo htmlspecialchars($donator['photo_name']) ?></strong></h6>
-                    <h6 class="">Photo type: <strong><?php echo htmlspecialchars($donator['photo_type']) ?></strong></h6>
-                    <h6 class="">Photo size: <strong><?php echo htmlspecialchars($donator['photo_size']) ?></strong></h6>
+                    <h5 class="display-6"><strong>Name: </strong><?php echo htmlspecialchars($donator['donator_name']) ?></h5>
+                    <h6 class=""><strong>Email: </strong><?php echo htmlspecialchars($donator['donator_email']) ?></h6>
+                    <h6 class=""><strong>Amount: </strong><?php echo htmlspecialchars($donator['amount']) ?></h6>
+                    <h6 class=""><strong>Created at: </strong><?php echo htmlspecialchars($donator['created_at']) ?></h6>
+                    <h6 class=""><strong>Updated at: </strong><?php echo htmlspecialchars($donator['updated_at']) ?></h6>
+                    <h6 class=""><strong>Deleted: </strong><?php echo htmlspecialchars($donator['is_deleted']) ?></h6>
+                    <h6 class=""><strong>Photo name: </strong><?php echo htmlspecialchars($donator['photo_name']) ?></h6>
+                    <h6 class=""><strong>Photo type: </strong><?php echo htmlspecialchars($donator['photo_type']) ?></h6>
+                    <h6 class=""><strong>Photo size: </strong><?php echo htmlspecialchars($donator['photo_size']) ?></h6>
                 </div>
             </div>
         </div>
     <?php endif; ?>
 
 </section>
-<section id="edit-donator-form">
+<section id="edit-donator-form" style=" background-color: #e8d6c1; ">
     <div class="container-fluid pb-2">
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" enctype="multipart/form-data">
 
-            <div class="d-flex justify-content-center mb-2 mt-5">
+            <div class="d-flex justify-content-center mb-2 pt-5">
                 <h4>EDIT DONATOR'S INFO</h4>
             </div>
             <div class="d-flex justify-content-center">

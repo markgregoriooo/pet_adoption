@@ -56,10 +56,10 @@
 </head>
 <body>
     <?php include('templates/header.php'); ?>
-    <section>
+    <section style=" background-color: #e8d6c1; ">
       <!-- display while the button is not clicked -->
-      <?php if(!isset($_POST['dog-adoption-form-btn'])): ?>
-          <div class="container mb-2 mt-3 p-2 border border-dark">
+      <?php if(!isset($_POST['dog-adopt-form-btn'])): ?>
+          <div class="container pb-2 pt-3 p-2 border border-dark">
               <div class="d-flex">
                 <!-- Displays a dynamically generated image using base64 encoding from the database -->
                 <img src="data:<?php echo htmlspecialchars($dog['photo_type']); ?>;base64,<?php echo base64_encode($dog['photo_data']); ?>" class="w-25 h-50 ms-5 mt-3 border border-dark" alt="dog photo">
@@ -76,7 +76,7 @@
       <?php endif;?>
 
     </section>
-    <section id="adoption-form">
+    <section id="adoption-form" style=" background-color: #e8d6c1; ">
         <div class="container-fluid pb-2">
             <h2 class="text-center pt-5">Adoption Form</h2>
             <!-- form. form allows file uploads by encoding the form data as "multipart/form-data -->

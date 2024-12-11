@@ -4,10 +4,9 @@
 <html lang="en">
     <div class="modal fade" data-bs-backdrop="static" id="dog_details" tabindex="-1" aria-labelledby="dog_detailsLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
+            <div class="modal-content" style=" background-color: #e8d6c1; ">
                 <div class="modal-header">
                     <h5 class="modal-title" id="dog_detailsLabel">dog Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <!-- dog details displayed as text in <p> tags -->
@@ -22,7 +21,7 @@
                     <p><strong>Size:</strong> <span id="modal_dog_size"></span></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn " style="background-color: bisque;" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>

@@ -36,37 +36,37 @@ if (isset($_GET['id'])) {
 <!DOCTYPE html>
 <html lang="en">
 <?php include('../templates/classicHeader.php'); ?>
-<section>
+<section style=" background-color: #e8d6c1; ">
     <?php if (!isset($_POST['edit-dog-form-btn'])): ?>
-        <div class="container mb-2 mt-3 p-2 border border-dark">
+        <div class="container pb-2 pt-3 p-2 border border-dark">
             <div class="d-flex">
                 <!-- show the dog's current details -->
                 <img src="data:<?php echo htmlspecialchars($dog['photo_type']); ?>;base64,<?php echo base64_encode($dog['photo_data']); ?>" class="w-25 h-50 ms-5 mt-3 border border-dark" alt="dog photo">
                 <div class="container border border-dark ms-5 overflow-scroll" style="max-height: 500px;">
-                    <h5 class="display-6">Name: <strong><?php echo htmlspecialchars($dog['pet_name']) ?></strong></h5>
-                    <h6 class="">Gender: <strong><?php echo htmlspecialchars($dog['gender']) ?></strong></h6>
-                    <h6 class="">Age: <strong><?php echo htmlspecialchars($dog['age']) ?></strong></h6>
-                    <h6 class="">Date of Birth: <strong><?php echo htmlspecialchars($dog['date_of_birth']) ?></strong></h6>
-                    <h6 class="">Leash trained: <strong><?php echo htmlspecialchars($dog['is_leash_trained']) ?></strong></h6>
-                    <h6 class="">Size: <strong><?php echo htmlspecialchars($dog['dog_size']) ?></strong></h6>
-                    <h6 class="">Crated at: <strong><?php echo htmlspecialchars($dog['created_at']) ?></strong></h6>
-                    <h6 class="">Updated at: <strong><?php echo htmlspecialchars($dog['updated_at']) ?></strong></h6>
-                    <h6 class="">Deleted: <strong><?php echo htmlspecialchars($dog['is_deleted']) ?></strong></h6>
-                    <h6 class="">Photo name: <strong><?php echo htmlspecialchars($dog['photo_name']) ?></strong></h6>
-                    <h6 class="">Photo type: <strong><?php echo htmlspecialchars($dog['photo_type']) ?></strong></h6>
-                    <h6 class="">Photo size: <strong><?php echo htmlspecialchars($dog['photo_size']) ?></strong></h6>
+                    <h5 class="display-6"><strong>Name: </strong><?php echo htmlspecialchars($dog['pet_name']) ?></h5>
+                    <h6 class=""><strong>Gender: </strong><?php echo htmlspecialchars($dog['gender']) ?></h6>
+                    <h6 class=""><strong>Age: </strong><?php echo htmlspecialchars($dog['age']) ?></h6>
+                    <h6 class=""><strong>Date of Birth: </strong><?php echo htmlspecialchars($dog['date_of_birth']) ?></h6>
+                    <h6 class=""><strong>Leash trained: </strong><?php echo htmlspecialchars($dog['is_leash_trained']) ?></h6>
+                    <h6 class=""><strong>Size: </strong><?php echo htmlspecialchars($dog['dog_size']) ?></h6>
+                    <h6 class=""><strong>Crated at: </strong><?php echo htmlspecialchars($dog['created_at']) ?></h6>
+                    <h6 class=""><strong>Updated at: </strong><?php echo htmlspecialchars($dog['updated_at']) ?></h6>
+                    <h6 class=""><strong>Deleted: </strong><?php echo htmlspecialchars($dog['is_deleted']) ?></h6>
+                    <h6 class=""><strong>Photo name: </strong><?php echo htmlspecialchars($dog['photo_name']) ?></h6>
+                    <h6 class=""><strong>Photo type: </strong><?php echo htmlspecialchars($dog['photo_type']) ?></h6>
+                    <h6 class=""><strong>Photo size: </strong><?php echo htmlspecialchars($dog['photo_size']) ?></h6>
                 </div>
             </div>
         </div>
     <?php endif; ?>
 
 </section>
-<section id="edit-dog-form">
+<section id="edit-dog-form" style=" background-color: #e8d6c1; ">
     <div class="container-fluid pb-2">
 
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" enctype="multipart/form-data">
 
-            <div class=" adopter-info-text d-flex justify-content-center mb-2 mt-3">
+            <div class=" adopter-info-text d-flex justify-content-center mb-2 pt-3">
                 <h4>EDIT DOG'S INFO</h4>
             </div>
             <div class="d-flex required-field-text justify-content-center">

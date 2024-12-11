@@ -10,7 +10,7 @@ $fNameInput = $emailAddInput = $addressInput = $contactNumInput =  $dateOfBirthI
 $fNameInputBorderColor = $emailAddInputBorderColor = $addressInputBorderColor = $contactNumInputBorderColor =  $dateOfBirthInputBorderColor = $occupInputBorderColor = $uploadPhotoBorderColor = $incomeInputBorderColor = "border-dark";
 
 // if any of these button is clicked
-if (isset($_POST['adopter-form-btn']) || isset($_POST['cat-adoption-form-btn']) || isset($_POST['dog-adoption-form-btn']) || isset($_POST['edit-adopter-form-btn'])) {
+if (isset($_POST['adopter-form-btn']) || isset($_POST['cat-adoption-form-btn']) || isset($_POST['dog-adopt-form-btn']) || isset($_POST['edit-adopter-form-btn'])) {
 
     // adopter fwullname validation
     if (empty($_POST['adopter-fullname'])) {

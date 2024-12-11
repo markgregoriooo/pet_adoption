@@ -28,13 +28,12 @@ if (isset($_FILES['adopter_photo']) && $_FILES['adopter_photo']['error'] == 0) {
         $dog_id = mysqli_real_escape_string($conn, $_SESSION['dogID']);
         $pet_id = mysqli_real_escape_string($conn, $_SESSION['pet_id']);
 
-
         //insert into adopter table 
         $stmt = $conn->prepare("INSERT INTO adopters(adopter_name, adopter_email, adopter_income, adopter_address, adopter_phone_number, date_of_birth, occupation, gender, adopter_status, photo_name, photo_data, photo_size, photo_type) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
         if ($stmt) {
             //bind param
-            $stmt->bind_param("ssdssssssssis", $fNameInput, $emailAddInput, $addressInput, $contactNumInput, $dateOfBirthInput, $occupInput, $incomeInput, $gender, $status, $fileName, $fileData, $fileSize, $fileType);
+            $stmt->bind_param("ssdssssssssis", $fNameInput, $emailAddInput, $incomeInput , $addressInput, $contactNumInput, $dateOfBirthInput, $occupInput, $gender, $status, $fileName, $fileData, $fileSize, $fileType);
 
             //execute the parent insert
             if ($stmt->execute()) {
@@ -62,10 +61,10 @@ if (isset($_FILES['adopter_photo']) && $_FILES['adopter_photo']['error'] == 0) {
             //bind parameters
             $stmt->bind_param("ii", $pet_id, $adopter_last_inserted_id);
 
-            //execute the cat table insert
+            //execute the dog table insert
             if (!$stmt->execute()) {
                 //if there is an error , roll back the transsaction
-                echo "Error preparing the cat insert statement" . $conn->error;
+                echo "Error preparing the dog insert statement" . $conn->error;
                 $conn->rollback();
                 exit;
             }
@@ -73,7 +72,7 @@ if (isset($_FILES['adopter_photo']) && $_FILES['adopter_photo']['error'] == 0) {
             //close the statement
             $stmt->close();
         } else {
-            echo "Error preparing the cat insert statement" . $conn->error;
+            echo "Error preparing the dog insert statement" . $conn->error;
             $conn->rollback();
             exit;
         }
@@ -86,10 +85,10 @@ if (isset($_FILES['adopter_photo']) && $_FILES['adopter_photo']['error'] == 0) {
             //bind parameters
             $stmt->bind_param("i", $pet_id);
 
-            //execute the cat table insert
+            //execute the dog table insert
             if (!$stmt->execute()) {
                 //if there is an error , roll back the transsaction
-                echo "Error preparing the cat insert statement" . $conn->error;
+                echo "Error preparing the dog insert statement" . $conn->error;
                 $conn->rollback();
                 exit;
             }
@@ -100,11 +99,11 @@ if (isset($_FILES['adopter_photo']) && $_FILES['adopter_photo']['error'] == 0) {
             //  dog adopted, redirect to other page
             echo
             "<script>
-                    alert('Dog adopted!');
-                    window.location.href = '../adopt.php';
+                    alert($fNameInput);
+                    window.location.href = 'adopt.php';
                 </script>";
         } else {
-            echo "Error preparing the cat insert statement" . $conn->error;
+            echo "Error preparing the dog insert statement" . $conn->error;
             $conn->rollback();
             exit;
         }

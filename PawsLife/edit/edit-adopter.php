@@ -36,27 +36,27 @@ if (isset($_GET['id'])) {
 <html lang="en">
 <?php include('../templates/classicHeader.php'); ?>
 
-<section>
+<section style=" background-color: #e8d6c1; ">
     <?php if (!isset($_POST['edit-adopter-form-btn'])): ?>
-        <div class="container mb-2 mt-3 p-2 border border-dark">
+        <div class="container pb-2 pt-3 p-2 border border-dark" >
             <div class="d-flex">
                 <!-- show adopter's current details -->
                 <img src="data:<?php echo htmlspecialchars($adopter['photo_type']); ?>;base64,<?php echo base64_encode($adopter['photo_data']); ?>" class="w-25 h-50 ms-5 mt-3 border border-dark" alt="donator photo">
                 <div class="container border border-dark ms-5 overflow-scroll" style="max-height: 500px;">
-                    <h5 class="display-6">Name: <strong><?php echo htmlspecialchars($adopter['adopter_name']) ?></strong></h5>
-                    <h6 class="">Email: <strong><?php echo htmlspecialchars($adopter['adopter_email']) ?></strong></h6>
-                    <h6 class="">Address: <strong><?php echo htmlspecialchars($adopter['adopter_address']) ?></strong></h6>
-                    <h6 class="">Contact no: <strong><?php echo htmlspecialchars($adopter['adopter_phone_number']) ?></strong></h6>
-                    <h6 class="">Date of Birth: <strong><?php echo htmlspecialchars($adopter['date_of_birth']) ?></strong></h6>
-                    <h6 class="">Gender: <strong><?php echo htmlspecialchars($adopter['gender']) ?></strong></h6>
-                    <h6 class="">Status: <strong><?php echo htmlspecialchars($adopter['adopter_status']) ?></strong></h6>
-                    <h6 class="">Occupation: <strong><?php echo htmlspecialchars($adopter['occupation']) ?></strong></h6>
-                    <h6 class="">Income: <strong><?php echo htmlspecialchars($adopter['adopter_income']) ?></strong></h6>
-                    <h6 class="">Photo name: <strong><?php echo htmlspecialchars($adopter['photo_name']) ?></strong></h6>
-                    <h6 class="">Photo type: <strong><?php echo htmlspecialchars($adopter['photo_type']) ?></strong></h6>
-                    <h6 class="">Photo size: <strong><?php echo htmlspecialchars($adopter['photo_size']) ?></strong></h6>
-                    <h6 class="">Crated at: <strong><?php echo htmlspecialchars($adopter['created_at']) ?></strong></h6>
-                    <h6 class="">Updated at: <strong><?php echo htmlspecialchars($adopter['updated_at']) ?></strong></h6>
+                    <h5 class="display-6"><strong>Name:</strong><?php echo htmlspecialchars($adopter['adopter_name']) ?></h5>
+                    <h6 class=""><strong>Email: </strong><?php echo htmlspecialchars($adopter['adopter_email']) ?></h6>
+                    <h6 class=""><strong>Address: </strong><?php echo htmlspecialchars($adopter['adopter_address']) ?></h6>
+                    <h6 class=""><strong>Contact no: </strong><?php echo htmlspecialchars($adopter['adopter_phone_number']) ?></h6>
+                    <h6 class=""><strong>Date of Birth: </strong><?php echo htmlspecialchars($adopter['date_of_birth']) ?></h6>
+                    <h6 class=""><strong>Gender: </strong><?php echo htmlspecialchars($adopter['gender']) ?></h6>
+                    <h6 class=""><strong>Status: </strong><?php echo htmlspecialchars($adopter['adopter_status']) ?></h6>
+                    <h6 class=""><strong>Occupation: </strong><?php echo htmlspecialchars($adopter['occupation']) ?></h6>
+                    <h6 class=""><strong>Income: </strong><?php echo htmlspecialchars($adopter['adopter_income']) ?></h6>
+                    <h6 class=""><strong>Photo name: </strong><?php echo htmlspecialchars($adopter['photo_name']) ?></h6>
+                    <h6 class=""><strong>Photo type: </strong><?php echo htmlspecialchars($adopter['photo_type']) ?></h6>
+                    <h6 class=""><strong>Photo size: </strong><?php echo htmlspecialchars($adopter['photo_size']) ?></h6>
+                    <h6 class=""><strong>rated at: </strong>C<?php echo htmlspecialchars($adopter['created_at']) ?></h6>
+                    <h6 class=""><strong>Updated at: </strong><?php echo htmlspecialchars($adopter['updated_at']) ?></h6>
 
                 </div>
             </div>
@@ -64,7 +64,7 @@ if (isset($_GET['id'])) {
     <?php endif; ?>
 
 </section>
-<section id="adopter-form">
+<section id="adopter-form" style=" background-color: #e8d6c1; ">
     <div class="container-fluid pb-2">
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" enctype="multipart/form-data">
 

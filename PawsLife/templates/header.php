@@ -55,9 +55,15 @@
                             <a href="adopt-login.php" class="nav-link ">Adopt</a>
                         </li>
                         <?php endif; ?>
+                        <?php if (isset($_SESSION['loggedin'])): ?>
                         <li class="nav-item" id="header-nav-bg">
                             <a href="donate.php" class="nav-link fw-bold">Donate</a>
                         </li>
+                        <?php else: ?>
+                        <li class="nav-item" id="header-nav-bg">
+                            <a href="donate.php" class="nav-link">Donate</a>
+                        </li>
+                        <?php endif; ?>
                         <!-- ff user is logged in, show log out button -->
                         <?php if (isset($_SESSION['loggedin'])): ?>
                             <li class="nav-item" id="header-nav-bg">
